@@ -7,38 +7,38 @@ type SmartLinkProps = LinkItem & {
 
 const PRACTICE_PROJECTS: ProjectItem[] = [
   {
-    id: "platform-products",
-    title: "Platform products",
-    category: "Capability preview",
+    id: "consumer-electronics",
+    title: "Consumer electronics",
+    category: "Capability area",
     description:
-      "Clear structures and useful interfaces for services with many moving parts.",
+      "Product form, component architecture, and everyday usability considered as one system.",
     image: null,
     href: null,
   },
   {
-    id: "customer-portals",
-    title: "Customer portals",
-    category: "Capability preview",
+    id: "wearable-products",
+    title: "Wearable products",
+    category: "Capability area",
     description:
-      "Thoughtful account experiences that make everyday tasks feel straightforward.",
+      "Human-centred concepts refined around fit, material, interaction, and production.",
     image: null,
     href: null,
   },
   {
-    id: "team-workflows",
-    title: "Team workflows",
-    category: "Capability preview",
+    id: "soft-goods-accessories",
+    title: "Soft goods & accessories",
+    category: "Capability area",
     description:
-      "Focused tools that help teams see what matters and act with confidence.",
+      "Practical design direction for products where construction and finish define the experience.",
     image: null,
     href: null,
   },
   {
-    id: "mobile-experiences",
-    title: "Mobile experiences",
-    category: "Capability preview",
+    id: "manufacturing-development",
+    title: "Manufacturing development",
+    category: "Capability area",
     description:
-      "Responsive product thinking shaped for smaller screens and real contexts.",
+      "Design-for-manufacture thinking that carries a concept toward an achievable physical product.",
     image: null,
     href: null,
   },
@@ -90,10 +90,10 @@ function ImageOrArtwork({
     <div
       className={`avk-artwork avk-artwork--${variant}`}
       role="img"
-      aria-label="Avokodo abstract studio artwork"
+      aria-label="Avokodo abstract industrial design study"
     >
       <span className="avk-artwork-code" aria-hidden="true">
-        AVK/{String(variant).padStart(2, "0")}
+        FORM/{String(variant).padStart(2, "0")}
       </span>
       <span className="avk-artwork-shape" aria-hidden="true" />
     </div>
@@ -129,11 +129,6 @@ export default function SitePage({ content }: { content: SiteContent }) {
   const { site, navigation, hero, about, services, work, process, contact, footer } =
     content;
   const displayedProjects = work.items.length ? work.items : PRACTICE_PROJECTS;
-  const facts = [
-    { value: String(services.items.length).padStart(2, "0"), label: "Core service areas" },
-    { value: String(process.steps.length).padStart(2, "0"), label: "Project stages" },
-    { value: "01", label: "Connected engagement" },
-  ];
 
   return (
     <div className="avk-site">
@@ -257,14 +252,16 @@ export default function SitePage({ content }: { content: SiteContent }) {
             <ImageOrArtwork image={about.image} variant={5} />
           </div>
 
-          <dl className="avk-facts" aria-label="Studio at a glance">
-            {facts.map((fact) => (
-              <div key={fact.label}>
-                <dt>{fact.label}</dt>
-                <dd>{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
+          {about.facts.length ? (
+            <dl className="avk-facts" aria-label="Studio at a glance">
+              {about.facts.map((fact) => (
+                <div key={fact.id}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : null}
         </section>
 
         <section className="avk-process avk-section" id="process" aria-labelledby="process-title">

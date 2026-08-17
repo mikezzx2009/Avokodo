@@ -467,6 +467,14 @@
   padding: 0 0.3rem;
 }
 
+.admin-subfieldset-copy {
+  max-width: 58ch;
+  margin: 0.15rem 0 0.9rem;
+  color: var(--admin-muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
 .admin-subfieldset-heading {
   display: flex;
   align-items: center;
@@ -659,16 +667,16 @@
 .admin-image-preview {
   overflow: hidden;
   min-height: 10rem;
+  aspect-ratio: 4 / 3;
   border-radius: 0.35rem;
-  background: #dfe2d8;
+  background: #e5e6df;
 }
 
 .admin-image-preview img {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 10rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .admin-image-placeholder {
@@ -729,11 +737,22 @@
 }
 
 .admin-media-path {
+  display: grid;
+  gap: 0.2rem;
   overflow-wrap: anywhere;
   margin: 0;
   color: var(--admin-muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.62rem;
+}
+
+.admin-media-path span {
+  color: #353a35;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.admin-media-path code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .admin-button {

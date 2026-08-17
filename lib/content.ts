@@ -9,6 +9,12 @@ export type ImageRef = {
   alt: string;
 };
 
+export type FactItem = {
+  id: string;
+  value: string;
+  label: string;
+};
+
 export type ServiceItem = {
   id: string;
   number: string;
@@ -53,6 +59,7 @@ export type SiteContent = {
     title: string;
     paragraphs: string[];
     image: ImageRef | null;
+    facts: FactItem[];
   };
   services: {
     eyebrow: string;
@@ -88,14 +95,14 @@ export type SiteContent = {
 };
 
 /**
- * Deliberately avoids client names, project outcomes, awards, headcount, and
- * other claims that have not been verified by Avokodo. It is both the first
- * published document and the recovery fallback if stored content is invalid.
+ * Uses only services, portfolio titles, locations, and profile metrics visible
+ * on Avokodo's authorized Upwork profile. It avoids unverified client names or
+ * outcomes. It is both the initial document and the safe recovery fallback.
  */
 export const DEFAULT_SITE_CONTENT: SiteContent = {
   site: {
     name: "Avokodo",
-    tagline: "Thoughtful digital products, made to work.",
+    tagline: "Design it. Engineer it. Make it.",
     email: null,
   },
   navigation: [
@@ -106,106 +113,171 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     { label: "Contact", href: "#contact" },
   ],
   hero: {
-    eyebrow: "Independent digital studio",
-    title: "We turn complex product ideas into clear, useful experiences.",
+    eyebrow: "Industrial design · Engineering · Manufacturing",
+    title: "Products, designed all the way to production.",
     description:
-      "Avokodo brings product thinking, interface design, and hands-on development into one focused process.",
-    primaryCta: { label: "Start a conversation", href: "#contact" },
-    secondaryCta: { label: "Explore our approach", href: "#process" },
-    image: null,
+      "Avokodo connects product and industrial design, 3D engineering, prototyping, tooling, and manufacturing through a studio in Guangdong and Hong Kong and a factory in Dongguan.",
+    primaryCta: { label: "Discuss a product", href: "#contact" },
+    secondaryCta: { label: "See selected work", href: "#work" },
+    image: {
+      id: "upwork-brand-film",
+      url: "/upwork-assets/brand-film.jpg",
+      alt: "Rendered rounded product forms in white, peach, and slate blue",
+    },
   },
   about: {
-    eyebrow: "About Avokodo",
-    title: "A close creative partnership from first question to final detail.",
+    eyebrow: "Studio and factory",
+    title: "One connected path from design intent to manufactured detail.",
     paragraphs: [
-      "Avokodo is an independent studio for founders and product teams who want to bring structure to ambitious digital ideas.",
-      "The studio connects strategy, design, and implementation so each stage can move in one clear direction.",
+      "Avokodo is a design studio in Guangdong and Hong Kong with a factory in Dongguan, bringing product design and manufacturing into one practical workflow.",
+      "The authorized Upwork profile records 10+ years of experience, Top Rated status, 100% Job Success, a 5.0 rating across 22 reviews, and 28 total jobs.",
     ],
     image: null,
+    facts: [
+      { id: "job-success", value: "100%", label: "Upwork Job Success" },
+      { id: "upwork-status", value: "Top Rated", label: "Upwork status" },
+      { id: "total-jobs", value: "28", label: "Total jobs" },
+      { id: "experience", value: "10+", label: "Years of experience" },
+    ],
   },
   services: {
-    eyebrow: "What we do",
-    title: "The thinking and craft a digital product needs.",
+    eyebrow: "Capabilities",
+    title: "From the first line on paper to production on the floor.",
     intro:
-      "Engagements are shaped around the problem, with a practical mix of product, design, and development work.",
+      "Choose a focused design engagement or connect the full product-development path through one team.",
     items: [
       {
-        id: "product-direction",
+        id: "product-design",
         number: "01",
-        title: "Product direction",
+        title: "Product & industrial design",
         description:
-          "Clarify the opportunity, audience, priorities, and path from idea to a focused product brief.",
-        capabilities: ["Discovery", "Product strategy", "Experience mapping"],
+          "Turn a brief into clear product concepts, balancing form, function, user needs, materials, and production intent.",
+        capabilities: ["Concept design", "Sketching", "Technical drawing", "Industrial design"],
       },
       {
-        id: "experience-design",
+        id: "3d-engineering",
         number: "02",
-        title: "Experience design",
+        title: "3D modeling & rendering",
         description:
-          "Shape intuitive flows and distinctive interfaces that make complex products easier to understand and use.",
-        capabilities: ["UX design", "UI design", "Prototyping", "Design systems"],
+          "Develop precise 3D models and persuasive visualizations for design review, engineering, and manufacturing handoff.",
+        capabilities: ["SolidWorks", "UG", "Pro/E", "CAD", "Blender", "Rhino", "KeyShot"],
       },
       {
-        id: "digital-build",
+        id: "prototyping-tooling",
         number: "03",
-        title: "Digital build",
+        title: "Prototyping & tooling",
         description:
-          "Translate approved ideas into responsive, maintainable web experiences with care for performance and detail.",
-        capabilities: ["Web development", "Responsive implementation", "Quality assurance"],
+          "Move from digital model to physical proof, then prepare the molds and fabrication route required for production.",
+        capabilities: [
+          "3D printing",
+          "Prototyping",
+          "Injection molds",
+          "Silicone molds",
+          "Metal die casting",
+          "Tooling & fabrication",
+        ],
+      },
+      {
+        id: "manufacturing",
+        number: "04",
+        title: "ODM, OEM & manufacturing",
+        description:
+          "Carry an approved product into manufacturing with the design, engineering, tooling, and factory stages connected.",
+        capabilities: ["ODM", "OEM", "Manufacturing", "Production handoff"],
       },
     ],
   },
   work: {
-    eyebrow: "Selected work",
-    title: "Work worth explaining properly.",
+    eyebrow: "Portfolio",
+    title: "Selected products, from concept to manufacture.",
     intro:
-      "This section is ready for project stories Avokodo chooses to publish. For verified work history, visit the Avokodo profile linked below.",
-    items: [],
+      "Three examples from the visible Avokodo portfolio, spanning early form development, 3D product engineering, and manufactured finishes.",
+    items: [
+      {
+        id: "high-end-accessories",
+        title: "High-end personal accessories",
+        category: "Concept sketch · Industrial design",
+        description:
+          "An early form study translating dimensions and ergonomics into a clear product direction.",
+        image: {
+          id: "upwork-high-end-accessories",
+          url: "/upwork-assets/high-end-accessories.jpg",
+          alt: "Dimensioned hand sketch for a curved personal accessory",
+        },
+        href: "https://www.upwork.com/freelancers/~01fbedf6c79f177fea?viewMode=1",
+      },
+      {
+        id: "wearable-product",
+        title: "Wearable product from design to manufacture",
+        category: "3D modeling · Design for manufacturing",
+        description:
+          "A wearable concept developed through 3D form, fit, engineering, and preparation for manufacture.",
+        image: {
+          id: "upwork-wearable-product",
+          url: "/upwork-assets/wearable-product.jpg",
+          alt: "Blue 3D rendering of two circular wearable product components",
+        },
+        href: "https://www.upwork.com/freelancers/~01fbedf6c79f177fea?viewMode=1",
+      },
+      {
+        id: "phone-case-leather",
+        title: "Phone case + leather",
+        category: "Product development · Manufacturing",
+        description:
+          "A phone-case structure paired with a leather finish and shown as a physical production sample.",
+        image: {
+          id: "upwork-phone-case-leather",
+          url: "/upwork-assets/phone-case-leather.jpg",
+          alt: "Black phone-case camera surround held above leather-finished cases",
+        },
+        href: "https://www.upwork.com/freelancers/~01fbedf6c79f177fea?viewMode=1",
+      },
+    ],
   },
   process: {
-    eyebrow: "How we work",
-    title: "A direct process, with room to think.",
+    eyebrow: "Product path",
+    title: "A practical route from brief to production.",
     intro:
-      "Each stage creates a clear decision point, keeping momentum without skipping the questions that matter.",
+      "The scope can begin at any stage, or continue as one connected design-and-manufacturing engagement.",
     steps: [
       {
-        id: "discover",
+        id: "brief-concept",
         number: "01",
-        title: "Discover",
-        description: "Understand the context, the audience, and what success needs to mean.",
+        title: "Brief & concept",
+        description: "Define product requirements, explore ideas, and establish a design direction.",
       },
       {
-        id: "define",
+        id: "design-engineer",
         number: "02",
-        title: "Define",
-        description: "Turn what we learn into priorities, structure, and a shared direction.",
+        title: "Design & engineer",
+        description: "Resolve form and function through sketches, technical drawings, and 3D models.",
       },
       {
-        id: "make",
+        id: "prototype-validate",
         number: "03",
-        title: "Make",
-        description: "Design, prototype, and build the experience in focused, reviewable steps.",
+        title: "Prototype & validate",
+        description: "Use 3D printing and physical prototypes to review fit, feel, and production details.",
       },
       {
-        id: "refine",
+        id: "tool-manufacture",
         number: "04",
-        title: "Refine",
-        description: "Test the details, resolve the rough edges, and prepare the work to go live.",
+        title: "Tool & manufacture",
+        description: "Prepare molds or fabrication, then move the approved product into manufacturing.",
       },
     ],
   },
   contact: {
-    eyebrow: "Start a project",
-    title: "Have a digital product in mind? Let’s make it clearer.",
+    eyebrow: "Start on Upwork",
+    title: "Bring the brief. Leave with a clear product path.",
     description:
-      "Share what you are building, where you are stuck, and what you would like to change.",
+      "Share the product idea, target material, quantity, and timing. Avokodo can help identify the right next step, from design through manufacturing.",
     email: null,
-    ctaLabel: "View the Avokodo profile",
+    ctaLabel: "View profile & start a conversation",
     ctaHref:
       "https://www.upwork.com/freelancers/~01fbedf6c79f177fea?viewMode=1",
   },
   footer: {
-    tagline: "Thoughtful digital products, made to work.",
+    tagline: "Product design and manufacturing, connected.",
     links: [
       { label: "Back to top", href: "#top" },
       { label: "Contact", href: "#contact" },
@@ -218,6 +290,13 @@ const MAX_CONTENT_BYTES = 80_000;
 const ID_PATTERN = /^[a-z0-9][a-z0-9_-]{0,63}$/;
 const EMAIL_PATTERN = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const MEDIA_URL_PATTERN = /^\/media\/([a-f0-9-]{16,64})$/i;
+const BUNDLED_IMAGE_IDS = new Map<string, string>([
+  ["/upwork-assets/high-end-accessories.jpg", "upwork-high-end-accessories"],
+  ["/upwork-assets/wearable-product.jpg", "upwork-wearable-product"],
+  ["/upwork-assets/phone-case-leather.jpg", "upwork-phone-case-leather"],
+  ["/upwork-assets/brand-film.jpg", "upwork-brand-film"],
+  ["/upwork-assets/broky-profile.webp", "upwork-broky-profile"],
+]);
 
 export class SiteContentValidationError extends Error {
   readonly issues: string[];
@@ -301,12 +380,25 @@ function parseHero(input: unknown, issues: string[]): SiteContent["hero"] {
 
 function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
   const value = objectValue(input, "about", issues);
-  exactKeys(value, ["eyebrow", "title", "paragraphs", "image"], "about", issues);
+  exactKeys(value, ["eyebrow", "title", "paragraphs", "image", "facts"], "about", issues);
   return {
     eyebrow: textValue(value.eyebrow, "about.eyebrow", 0, 100, issues),
     title: textValue(value.title, "about.title", 1, 240, issues),
     paragraphs: stringArray(value.paragraphs, "about.paragraphs", 1, 8, 1, 1_500, issues),
     image: parseNullableImage(value.image, "about.image", issues),
+    facts: arrayValue(value.facts, "about.facts", 1, 6, issues).map((item, index) =>
+      parseFact(item, `about.facts[${index}]`, issues),
+    ),
+  };
+}
+
+function parseFact(input: unknown, path: string, issues: string[]): FactItem {
+  const value = objectValue(input, path, issues);
+  exactKeys(value, ["id", "value", "label"], path, issues);
+  return {
+    id: idValue(value.id, `${path}.id`, issues),
+    value: textValue(value.value, `${path}.value`, 1, 24, issues),
+    label: textValue(value.label, `${path}.label`, 1, 100, issues),
   };
 }
 
@@ -439,8 +531,13 @@ function parseNullableImage(input: unknown, path: string, issues: string[]): Ima
   const id = textValue(value.id, `${path}.id`, 16, 64, issues);
   const url = textValue(value.url, `${path}.url`, 1, 100, issues);
   const match = MEDIA_URL_PATTERN.exec(url);
-  if (!match || match[1] !== id) {
-    issues.push(`${path}.url must be /media/{id} and match ${path}.id`);
+  const bundledId = BUNDLED_IMAGE_IDS.get(url);
+  const validUploadedMedia = Boolean(match && match[1] === id);
+  const validBundledMedia = bundledId === id;
+  if (!validUploadedMedia && !validBundledMedia) {
+    issues.push(
+      `${path}.url must be an approved bundled image or /media/{id}, and match ${path}.id`,
+    );
   }
   return {
     id,

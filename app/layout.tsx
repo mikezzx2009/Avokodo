@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "Avokodo — Thoughtful digital products, made to work.";
+const title = "Avokodo — Product design, prototyping & manufacturing";
 const description =
-  "Avokodo brings product thinking, interface design, and hands-on development into one focused process.";
+  "Avokodo turns physical product ideas into manufacturing-ready designs, prototypes, tooling, and production support.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -16,8 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const image = `${origin}/og.png`;
-
   return {
     metadataBase: new URL(origin),
     title,
@@ -28,20 +26,11 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Avokodo",
       title,
       description,
-      images: [
-        {
-          url: image,
-          width: 1732,
-          height: 908,
-          alt: "Avokodo — Thoughtful digital products, made to work.",
-        },
-      ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
-      images: [image],
     },
     robots: {
       index: true,

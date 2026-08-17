@@ -51,6 +51,7 @@ type TextFieldProps = {
   multiline?: boolean;
   rows?: number;
   type?: "text" | "email" | "url";
+  maxLength?: number;
 };
 
 type ImageEditorProps = {
@@ -135,6 +136,7 @@ function TextField({
   multiline = false,
   rows = 4,
   type = "text",
+  maxLength,
 }: TextFieldProps) {
   const descriptionId = description ? `${id}-description` : undefined;
 
@@ -147,6 +149,7 @@ function TextField({
           id={id}
           value={value}
           rows={rows}
+          maxLength={maxLength}
           placeholder={placeholder}
           aria-describedby={descriptionId}
           onChange={(event) => onChange(event.currentTarget.value)}
@@ -155,6 +158,7 @@ function TextField({
         <input
           id={id}
           type={type}
+          maxLength={maxLength}
           value={value}
           placeholder={placeholder}
           aria-describedby={descriptionId}
@@ -428,7 +432,7 @@ function ImageEditor({
       <div className="admin-image-editor__layout">
         <div className="admin-image-preview">
           {image?.url ? (
-            // Images are user-managed and can originate from the configured R2 domain.
+            // Sources can be bundled portfolio assets or editor uploads served from /media.
             // eslint-disable-next-line @next/next/no-img-element
             <img src={image.url} alt={image.alt || ""} />
           ) : (
@@ -440,8 +444,14 @@ function ImageEditor({
         </div>
         <div className="admin-image-controls">
           <div className="admin-field">
-            <label htmlFor={`${id}-file`}>Upload image</label>
-            <p>JPG, PNG, WebP or AVIF, up to 10 MB. Use a wide image for project cards.</p>
+            <label htmlFor={`${id}-file`}>
+              {image ? "Replace image" : "Upload image"}
+            </label>
+            <p>
+              JPG, PNG, WebP or AVIF, up to 10 MB. Clear, high-resolution
+              product imagery works best; use a landscape composition for
+              project cards.
+            </p>
             <input
               className="admin-file-input"
               id={`${id}-file`}
@@ -461,11 +471,14 @@ function ImageEditor({
               <TextField
                 id={`${id}-alt`}
                 label="Alternative text"
-                description="Describe the image for visitors using a screen reader."
+                description="Describe the product, materials, form or setting for visitors using a screen reader."
                 value={image.alt}
                 onChange={(alt) => onChange({ ...image, alt })}
               />
-              <p className="admin-media-path">Stored securely as {image.url}</p>
+              <p className="admin-media-path">
+                <span>Current image</span>
+                <code>{image.url}</code>
+              </p>
               <button
                 type="button"
                 className="admin-text-button admin-text-button--danger"
@@ -999,6 +1012,89 @@ export default function AdminEditor({ admin, signOutHref }: EditorProps) {
                 maxItems={8}
                 onChange={(values) => edit((draft) => { draft.about.paragraphs = values; })}
               />
+              <fieldset className="admin-subfieldset">
+                <legend>Verified facts</legend>
+                <p className="admin-subfieldset-copy">
+                  Keep these short and use only figures that can be confirmed
+                  from Avokodo&apos;s public profile.
+                </p>
+                <div className="admin-card-list">
+                  {content.about.facts.map((fact, index) => (
+                    <article className="admin-compact-card" key={fact.id}>
+                      <div className="admin-card-heading">
+                        <div>
+                          <span className="admin-card-index">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <strong>{fact.label || `Fact ${index + 1}`}</strong>
+                        </div>
+                        <ItemActions
+                          label={fact.label || `fact ${index + 1}`}
+                          index={index}
+                          count={content.about.facts.length}
+                          canRemove={content.about.facts.length > 1}
+                          onMove={(direction) =>
+                            edit((draft) => {
+                              draft.about.facts = moveItem(
+                                draft.about.facts,
+                                index,
+                                direction,
+                              );
+                            })
+                          }
+                          onRemove={() =>
+                            edit((draft) => {
+                              draft.about.facts.splice(index, 1);
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="admin-field-grid admin-field-grid--two">
+                        <TextField
+                          id={`about-fact-${fact.id}-value`}
+                          label="Value"
+                          description="For example: 100% or 10+ (up to 24 characters)."
+                          value={fact.value}
+                          maxLength={24}
+                          onChange={(value) =>
+                            edit((draft) => {
+                              draft.about.facts[index].value = value;
+                            })
+                          }
+                        />
+                        <TextField
+                          id={`about-fact-${fact.id}-label`}
+                          label="Label"
+                          description="Explain what the value represents."
+                          value={fact.label}
+                          maxLength={100}
+                          onChange={(value) =>
+                            edit((draft) => {
+                              draft.about.facts[index].label = value;
+                            })
+                          }
+                        />
+                      </div>
+                    </article>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className="admin-add-button"
+                  disabled={content.about.facts.length >= 6}
+                  onClick={() =>
+                    edit((draft) => {
+                      draft.about.facts.push({
+                        id: makeId("fact"),
+                        value: "",
+                        label: "",
+                      });
+                    })
+                  }
+                >
+                  <span aria-hidden="true">+</span> Add fact
+                </button>
+              </fieldset>
               <ImageEditor
                 id="about-image"
                 label="About image"
@@ -1198,7 +1294,7 @@ export default function AdminEditor({ admin, signOutHref }: EditorProps) {
                     />
                     <ImageEditor
                       id={`project-${project.id}-image`}
-                      label="Project image"
+                      label="Product / project image"
                       image={project.image}
                       busy={uploading === `project-${project.id}`}
                       onChange={(image) => edit((draft) => { draft.work.items[index].image = image; })}
