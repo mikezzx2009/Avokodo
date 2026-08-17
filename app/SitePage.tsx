@@ -74,7 +74,7 @@ function ImageOrArtwork({
 }) {
   if (image?.url) {
     return (
-      // Native images keep CMS-managed and remote media flexible.
+      // Native images keep bundled and remote portfolio media flexible.
       // eslint-disable-next-line @next/next/no-img-element
       <img
         className="avk-media-image"
@@ -323,10 +323,10 @@ export default function SitePage({ content }: { content: SiteContent }) {
         </nav>
 
         <div className="avk-footer-meta">
-          <p>{footer.copyright}</p>
-          <a className="avk-admin-link" href="/admin">
-            Admin
+          <a className="avk-admin-link" href="/admin/">
+            Manage site
           </a>
+          <p>{footer.copyright}</p>
         </div>
       </footer>
     </div>

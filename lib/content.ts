@@ -95,11 +95,14 @@ export type SiteContent = {
 };
 
 /**
- * Uses only services, portfolio titles, locations, and profile metrics visible
- * on Avokodo's authorized Upwork profile. It avoids unverified client names or
- * outcomes. It is both the initial document and the safe recovery fallback.
+ * The complete, production-published Avokodo presentation.
+ *
+ * GitHub Pages has no runtime database, so this checked-in object is the
+ * authoritative content source. It uses only services, portfolio titles,
+ * locations, and profile metrics visible on Avokodo's authorized Upwork
+ * profile and avoids unverified client names or outcomes.
  */
-export const DEFAULT_SITE_CONTENT: SiteContent = {
+export const PUBLISHED_SITE_CONTENT: SiteContent = {
   site: {
     name: "Avokodo",
     tagline: "Design it. Engineer it. Make it.",
@@ -286,10 +289,15 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   },
 };
 
+/**
+ * Kept as a compatibility alias for presentation components while the static
+ * site replaces the former CMS implementation.
+ */
+export const DEFAULT_SITE_CONTENT = PUBLISHED_SITE_CONTENT;
+
 const MAX_CONTENT_BYTES = 80_000;
 const ID_PATTERN = /^[a-z0-9][a-z0-9_-]{0,63}$/;
 const EMAIL_PATTERN = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
-const MEDIA_URL_PATTERN = /^\/media\/([a-f0-9-]{16,64})$/i;
 const BUNDLED_IMAGE_IDS = new Map<string, string>([
   ["/upwork-assets/high-end-accessories.jpg", "upwork-high-end-accessories"],
   ["/upwork-assets/wearable-product.jpg", "upwork-wearable-product"],
@@ -344,7 +352,11 @@ export function parseSiteContent(input: unknown): SiteContent {
 }
 
 export function cloneDefaultSiteContent(): SiteContent {
-  return JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT)) as SiteContent;
+  return clonePublishedSiteContent();
+}
+
+export function clonePublishedSiteContent(): SiteContent {
+  return JSON.parse(JSON.stringify(PUBLISHED_SITE_CONTENT)) as SiteContent;
 }
 
 function parseSite(input: unknown, issues: string[]): SiteContent["site"] {
@@ -530,14 +542,10 @@ function parseNullableImage(input: unknown, path: string, issues: string[]): Ima
   exactKeys(value, ["id", "url", "alt"], path, issues);
   const id = textValue(value.id, `${path}.id`, 16, 64, issues);
   const url = textValue(value.url, `${path}.url`, 1, 100, issues);
-  const match = MEDIA_URL_PATTERN.exec(url);
   const bundledId = BUNDLED_IMAGE_IDS.get(url);
-  const validUploadedMedia = Boolean(match && match[1] === id);
   const validBundledMedia = bundledId === id;
-  if (!validUploadedMedia && !validBundledMedia) {
-    issues.push(
-      `${path}.url must be an approved bundled image or /media/{id}, and match ${path}.id`,
-    );
+  if (!validBundledMedia) {
+    issues.push(`${path}.url must be an approved bundled image and match ${path}.id`);
   }
   return {
     id,

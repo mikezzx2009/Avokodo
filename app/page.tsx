@@ -1,12 +1,9 @@
-import { getPublishedContent } from "@/lib/cms";
 import { DEFAULT_SITE_CONTENT } from "@/lib/content";
 import SitePage from "./SitePage";
 import "./site.css";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
-export default async function Home() {
-  const content = await getPublishedContent().catch(() => DEFAULT_SITE_CONTENT);
-
-  return <SitePage content={content ?? DEFAULT_SITE_CONTENT} />;
+export default function Home() {
+  return <SitePage content={DEFAULT_SITE_CONTENT} />;
 }
