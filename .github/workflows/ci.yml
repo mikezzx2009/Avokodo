@@ -26,6 +26,7 @@ jobs:
         uses: actions/configure-pages@v6
         with:
           static_site_generator: next
+          generator_config_file: next.config.mjs
       - name: Install dependencies
         run: npm ci
       - name: Build the site
