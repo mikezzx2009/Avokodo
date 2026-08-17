@@ -16,6 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
+  const image = `${origin}/og.png`;
+
   return {
     metadataBase: new URL(origin),
     title,
@@ -26,11 +28,20 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Avokodo",
       title,
       description,
+      images: [
+        {
+          url: image,
+          width: 1733,
+          height: 908,
+          alt: "Avokodo — Product design to manufacturing",
+        },
+      ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
+      images: [image],
     },
     robots: {
       index: true,
