@@ -1394,3 +1394,8 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+.avk-header .avk-wordmark {
+  text-transform: uppercase;
+}
