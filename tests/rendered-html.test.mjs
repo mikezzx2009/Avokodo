@@ -188,3 +188,25 @@ test("static export contains the published copy and every referenced asset", asy
     await access(new URL(`out${image.url}`, root));
   }
 });
+
+test("exports the Avokodo browser tab icon", async () => {
+  const [homeHtml, adminHtml, notFoundHtml, sourceIcon, exportedIcon] =
+    await Promise.all([
+      source("out/index.html"),
+      source("out/admin/index.html"),
+      source("out/404.html"),
+      source("app/icon.svg"),
+      source("out/icon.svg"),
+    ]);
+
+  const iconLink =
+    /<link rel="icon" href="\/icon\.svg(?:\?[^"]*)?" type="image\/svg\+xml" sizes="any"\/>/;
+
+  assert.match(homeHtml, iconLink);
+  assert.match(adminHtml, iconLink);
+  assert.match(notFoundHtml, iconLink);
+  assert.equal(exportedIcon, sourceIcon);
+  assert.match(exportedIcon, /#171814/);
+  assert.match(exportedIcon, /#c8ef68/);
+  assert.match(exportedIcon, /#59714a/);
+});
