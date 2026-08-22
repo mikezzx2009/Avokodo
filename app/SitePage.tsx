@@ -44,6 +44,45 @@ const PRACTICE_PROJECTS: ProjectItem[] = [
   },
 ];
 
+const CATALOG_ITEMS: ProjectItem[] = [
+  {
+    id: "catalog-product-design",
+    title: "Product design",
+    category: "Catalog",
+    description:
+      "Early concepts, form development, and usability considered as a single product system.",
+    image: null,
+    href: null,
+  },
+  {
+    id: "catalog-engineering",
+    title: "Engineering",
+    category: "Catalog",
+    description:
+      "Component architecture and design-for-manufacture thinking that supports real-world production.",
+    image: null,
+    href: null,
+  },
+  {
+    id: "catalog-prototyping",
+    title: "Prototyping",
+    category: "Catalog",
+    description:
+      "Practical development that helps validate a product before its next manufacturing step.",
+    image: null,
+    href: null,
+  },
+  {
+    id: "catalog-factory-handoff",
+    title: "Factory handoff",
+    category: "Catalog",
+    description:
+      "Production-ready detail, material direction, and finish considerations for the final product.",
+    image: null,
+    href: null,
+  },
+];
+
 function isExternal(href: string) {
   return /^https?:\/\//i.test(href);
 }
@@ -143,6 +182,7 @@ export default function SitePage({ content }: { content: SiteContent }) {
         </a>
 
         <nav className="avk-nav" aria-label="Primary navigation">
+          <SmartLink href="#catalog" label="Catalog" />
           {navigation.map((item) => (
             <SmartLink key={`${item.label}-${item.href}`} {...item} />
           ))}
@@ -203,6 +243,33 @@ export default function SitePage({ content }: { content: SiteContent }) {
                   <p>{project.category}</p>
                 </div>
                 <p className="avk-project-description">{project.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="avk-work avk-section"
+          id="catalog"
+          aria-labelledby="catalog-title"
+        >
+          <div className="avk-section-heading">
+            <p className="avk-eyebrow">Catalog</p>
+            <h2 id="catalog-title">product and factory</h2>
+            <p className="avk-section-intro">
+              A focused overview of product development and factory-ready production.
+            </p>
+          </div>
+
+          <div className="avk-project-grid">
+            {CATALOG_ITEMS.map((item, index) => (
+              <article className="avk-project" key={item.id}>
+                <ProjectMedia project={item} index={index} />
+                <div className="avk-project-meta">
+                  <h3>{item.title}</h3>
+                  <p>{item.category}</p>
+                </div>
+                <p className="avk-project-description">{item.description}</p>
               </article>
             ))}
           </div>
@@ -317,6 +384,7 @@ export default function SitePage({ content }: { content: SiteContent }) {
         </div>
 
         <nav className="avk-footer-links" aria-label="Footer navigation">
+          <SmartLink href="#catalog" label="Catalog" />
           {footer.links.map((item) => (
             <SmartLink key={`${item.label}-${item.href}`} {...item} />
           ))}
@@ -332,3 +400,4 @@ export default function SitePage({ content }: { content: SiteContent }) {
     </div>
   );
 }
+
