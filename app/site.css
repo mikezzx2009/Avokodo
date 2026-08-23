@@ -128,6 +128,12 @@
   transform-origin: left;
 }
 
+.avk-nav a[aria-current="page"]::after,
+.avk-footer-links a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .avk-header-cta,
 .avk-button {
   display: inline-flex;
@@ -270,6 +276,14 @@
 
 .avk-section {
   padding: clamp(6rem, 10vw, 11rem) 3vw;
+}
+
+.avk-page-main {
+  min-height: 65vh;
+}
+
+.avk-page-main .avk-process {
+  padding-top: clamp(6rem, 10vw, 11rem);
 }
 
 .avk-section-heading {
