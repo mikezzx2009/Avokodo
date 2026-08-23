@@ -179,20 +179,39 @@ test("keeps published content validation bounded", async () => {
   );
 });
 
-test("static export contains the published copy and every referenced asset", async () => {
+test("keeps the homepage focused while section pages retain their content", async () => {
   const { PUBLISHED_SITE_CONTENT } = await contentModule();
-  const html = await source("out/index.html");
+  const [homeHtml, aboutHtml, workHtml] = await Promise.all([
+    source("out/index.html"),
+    source("out/about/index.html"),
+    source("out/work/index.html"),
+  ]);
+  const homeMarkup = homeHtml.split("<script>(self.__next_f")[0];
 
-  assert.match(html, /Products, designed all the way to production\./);
-  assert.match(html, /High-end personal accessories/);
-  assert.match(html, /Wearable product from design to manufacture/);
-  assert.match(html, /Phone case \+ leather/);
-  assert.match(html, /100%/);
-  assert.match(html, /Top Rated/);
-  assert.doesNotMatch(html, /\/api\/admin|\/media\/|signin-with-chatgpt/);
+  assert.match(homeMarkup, /Products, designed all the way to production\./);
+  assert.doesNotMatch(
+    homeMarkup,
+    /id="(?:catalog|about|services|work|process|contact)"/,
+  );
+  assert.doesNotMatch(homeMarkup, /High-end personal accessories/);
+  assert.doesNotMatch(
+    homeMarkup,
+    /Upwork Job Success|Top Rated|PRODUCT AND FACTORY/,
+  );
+  assert.doesNotMatch(homeHtml, /\/api\/admin|\/media\/|signin-with-chatgpt/);
+
+  assert.match(workHtml, /High-end personal accessories/);
+  assert.match(workHtml, /Wearable product from design to manufacture/);
+  assert.match(workHtml, /Phone case \+ leather/);
 
   for (const image of contentImages(PUBLISHED_SITE_CONTENT)) {
-    assert.match(html, new RegExp(image.url.replaceAll("/", "\\/")));
+    const pageHtml =
+      image === PUBLISHED_SITE_CONTENT.hero.image
+        ? homeHtml
+        : image === PUBLISHED_SITE_CONTENT.about.image
+          ? aboutHtml
+          : workHtml;
+    assert.match(pageHtml, new RegExp(image.url.replaceAll("/", "\\/")));
     await access(new URL(`out${image.url}`, root));
   }
 });
