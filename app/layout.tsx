@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./site.css";
 
 const title = "Avokodo — Product design, prototyping & manufacturing";
 const description =

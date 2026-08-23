@@ -55,6 +55,14 @@ test("locks the complete published Avokodo presentation to repository assets", a
   assert.equal(DEFAULT_SITE_CONTENT, PUBLISHED_SITE_CONTENT);
   assert.doesNotThrow(() => parseSiteContent(PUBLISHED_SITE_CONTENT));
   assert.equal(PUBLISHED_SITE_CONTENT.site.name, "Avokodo");
+  assert.deepEqual(PUBLISHED_SITE_CONTENT.navigation, [
+    { label: "Catalog", href: "/catalog/" },
+    { label: "About", href: "/about/" },
+    { label: "Services", href: "/services/" },
+    { label: "Work", href: "/work/" },
+    { label: "Process", href: "/process/" },
+    { label: "Contact", href: "/contact/" },
+  ]);
   assert.match(PUBLISHED_SITE_CONTENT.hero.title, /production/i);
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.about.facts.map(({ value, label }) => [value, label]),
@@ -186,6 +194,35 @@ test("static export contains the published copy and every referenced asset", asy
   for (const image of contentImages(PUBLISHED_SITE_CONTENT)) {
     assert.match(html, new RegExp(image.url.replaceAll("/", "\\/")));
     await access(new URL(`out${image.url}`, root));
+  }
+});
+
+test("exports every primary navigation item as its own content page", async () => {
+  const routes = {
+    catalog: "PRODUCT AND FACTORY",
+    about: "One connected path from design intent to manufactured detail.",
+    services: "From the first line on paper to production on the floor.",
+    work: "Selected products, from concept to manufacture.",
+    process: "A practical route from brief to production.",
+    contact: "Bring the brief. Leave with a clear product path.",
+  };
+  const expectedLinks = Object.keys(routes).map((route) => `href="/${route}/"`);
+  const homeHtml = await source("out/index.html");
+
+  for (const link of expectedLinks) assert.match(homeHtml, new RegExp(link));
+
+  for (const [route, copy] of Object.entries(routes)) {
+    const html = await source(`out/${route}/index.html`);
+
+    assert.match(html, new RegExp(copy.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      html,
+      new RegExp(
+        `<link rel="canonical" href="https://www\\.avokodotech\\.com/${route}/"`,
+      ),
+    );
+    assert.doesNotMatch(html, /Products, designed all the way to production\./);
+    for (const link of expectedLinks) assert.match(html, new RegExp(link));
   }
 });
 

@@ -109,19 +109,20 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
     email: null,
   },
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Work", href: "#work" },
-    { label: "Process", href: "#process" },
-    { label: "Contact", href: "#contact" },
+    { label: "Catalog", href: "/catalog/" },
+    { label: "About", href: "/about/" },
+    { label: "Services", href: "/services/" },
+    { label: "Work", href: "/work/" },
+    { label: "Process", href: "/process/" },
+    { label: "Contact", href: "/contact/" },
   ],
   hero: {
     eyebrow: "Industrial design · Engineering · Manufacturing",
     title: "Products, designed all the way to production.",
     description:
       "Avokodo connects product and industrial design, 3D engineering, prototyping, tooling, and manufacturing through a studio in Guangdong and Hong Kong and a factory in Dongguan.",
-    primaryCta: { label: "Discuss a product", href: "#contact" },
-    secondaryCta: { label: "See selected work", href: "#work" },
+    primaryCta: { label: "Discuss a product", href: "/contact/" },
+    secondaryCta: { label: "See selected work", href: "/work/" },
     image: {
       id: "upwork-brand-film",
       url: "/upwork-assets/brand-film.jpg",
@@ -283,7 +284,7 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
     tagline: "Product design and manufacturing, connected.",
     links: [
       { label: "Back to top", href: "#top" },
-      { label: "Contact", href: "#contact" },
+      { label: "Contact", href: "/contact/" },
     ],
     copyright: "© Avokodo. All rights reserved.",
   },
