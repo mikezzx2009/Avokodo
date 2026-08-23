@@ -1184,6 +1184,7 @@
 
 .avk-wordmark--footer {
   font-size: clamp(2.5rem, 5vw, 5.8rem);
+  text-transform: uppercase;
 }
 
 .avk-footer-brand p {
