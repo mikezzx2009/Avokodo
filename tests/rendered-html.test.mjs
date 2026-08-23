@@ -67,7 +67,7 @@ test("locks the complete published Avokodo presentation to repository assets", a
     { label: "Process", href: "/process/" },
     { label: "Contact", href: "/contact/" },
   ]);
-  assert.match(PUBLISHED_SITE_CONTENT.hero.title, /production/i);
+  assert.equal(PUBLISHED_SITE_CONTENT.hero.title, "DESIGN & MANUFACTURE SERVICE");
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.about.facts.map(({ value, label }) => [value, label]),
     [
@@ -192,7 +192,7 @@ test("keeps the homepage focused while section pages retain their content", asyn
   ]);
   const homeMarkup = homeHtml.split("<script>(self.__next_f")[0];
 
-  assert.match(homeMarkup, /Products &amp; designed all the way to production/);
+  assert.match(homeMarkup, /DESIGN &amp; MANUFACTURE SERVICE/);
   assert.doesNotMatch(
     homeMarkup,
     /id="(?:catalog|about|services|work|process|contact)"/,
@@ -244,7 +244,7 @@ test("exports every primary navigation item as its own content page", async () =
         `<link rel="canonical" href="https://www\\.avokodotech\\.com/${route}/"`,
       ),
     );
-    assert.doesNotMatch(html, /Products &amp; designed all the way to production/);
+    assert.doesNotMatch(html, /DESIGN &amp; MANUFACTURE SERVICE/);
     for (const link of expectedLinks) assert.match(html, new RegExp(link));
   }
 });
