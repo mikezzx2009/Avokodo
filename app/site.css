@@ -282,16 +282,18 @@
   min-height: 65vh;
 }
 
-.avk-page-main .avk-process {
-  padding-top: clamp(6rem, 10vw, 11rem);
-}
-
-.avk-page-main .avk-catalog-index-section {
+.avk-page-main > .avk-page-section--flush {
   padding-top: 0;
 }
 
-.avk-page-main .avk-catalog-index-section > .avk-section-heading {
+.avk-page-main
+  > .avk-page-section--flush
+  > .avk-section-heading {
   border-top: 0;
+}
+
+.avk-page-main > .avk-page-section--compact {
+  padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
 .avk-page-main

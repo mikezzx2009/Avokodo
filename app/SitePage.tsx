@@ -277,7 +277,11 @@ export default function SitePage({
         ) : null}
 
         {shows("work") ? (
-        <section className="avk-work avk-section" id="work" aria-labelledby="work-title">
+        <section
+          className="avk-work avk-section avk-page-section--flush"
+          id="work"
+          aria-labelledby="work-title"
+        >
           <div className="avk-section-heading">
             <p className="avk-eyebrow">{work.eyebrow}</p>
             <h2
@@ -314,8 +318,8 @@ export default function SitePage({
         <section
           className={
             catalogCategory
-              ? "avk-work avk-section"
-              : "avk-work avk-section avk-catalog-index-section"
+              ? "avk-work avk-section avk-page-section--compact"
+              : "avk-work avk-section avk-catalog-index-section avk-page-section--flush"
           }
           id="catalog"
           aria-labelledby="catalog-title"
@@ -330,7 +334,7 @@ export default function SitePage({
 
         {shows("services") ? (
         <section
-          className="avk-services avk-section avk-section--ink"
+          className="avk-services avk-section avk-section--ink avk-page-section--flush"
           id="services"
           aria-labelledby="services-title"
         >
@@ -360,7 +364,11 @@ export default function SitePage({
         ) : null}
 
         {shows("about") ? (
-        <section className="avk-about avk-section" id="about" aria-labelledby="about-title">
+        <section
+          className="avk-about avk-section avk-page-section--compact"
+          id="about"
+          aria-labelledby="about-title"
+        >
           <div className="avk-about-copy">
             <p className="avk-eyebrow">{about.eyebrow}</p>
             <h2 id="about-title">{about.title}</h2>
@@ -389,7 +397,11 @@ export default function SitePage({
         ) : null}
 
         {shows("process") ? (
-        <section className="avk-process avk-section" id="process" aria-labelledby="process-title">
+        <section
+          className="avk-process avk-section avk-page-section--flush"
+          id="process"
+          aria-labelledby="process-title"
+        >
           <div className="avk-section-heading avk-section-heading--split">
             <p className="avk-eyebrow">{process.eyebrow}</p>
             <h2 id="process-title">{process.title}</h2>
@@ -409,7 +421,11 @@ export default function SitePage({
         ) : null}
 
         {shows("contact") ? (
-        <section className="avk-contact" id="contact" aria-labelledby="contact-title">
+        <section
+          className="avk-contact avk-page-section--compact"
+          id="contact"
+          aria-labelledby="contact-title"
+        >
           <p className="avk-eyebrow">{contact.eyebrow}</p>
           <h2 id="contact-title">{contact.title}</h2>
           <div className="avk-contact-bottom">
