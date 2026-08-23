@@ -118,7 +118,7 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
   ],
   hero: {
     eyebrow: "Industrial design · Engineering · Manufacturing",
-    title: "Products, designed all the way to production.",
+    title: "Products & designed all the way to production",
     description:
       "Avokodo connects product and industrial design, 3D engineering, prototyping, tooling, and manufacturing through a studio in Guangdong and Hong Kong and a factory in Dongguan.",
     primaryCta: { label: "Discuss a product", href: "/contact/" },
@@ -687,3 +687,4 @@ function hasUnsupportedControlCharacter(value: string): boolean {
   }
   return false;
 }
+
