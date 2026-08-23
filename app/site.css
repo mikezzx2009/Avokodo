@@ -453,6 +453,214 @@
   line-height: 1.55;
 }
 
+.avk-catalog-index {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(3rem, 6vw, 6rem) clamp(1rem, 2.3vw, 2.5rem);
+}
+
+.avk-catalog-card {
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.avk-catalog-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #d8d7d0;
+}
+
+.avk-catalog-image,
+.avk-catalog-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.avk-catalog-card .avk-catalog-image {
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.avk-catalog-card:hover .avk-catalog-image,
+.avk-catalog-card:focus-visible .avk-catalog-image {
+  transform: scale(1.035);
+}
+
+.avk-catalog-card-media > span {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.35rem 0.45rem;
+  background: rgba(23, 24, 20, 0.88);
+  color: #f6f4ed;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+.avk-catalog-card-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--avk-line);
+}
+
+.avk-catalog-card-heading h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.8vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.avk-catalog-card > p {
+  margin: 0.75rem 0 0;
+  color: rgba(23, 24, 20, 0.65);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.avk-catalog-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avk-catalog-card li {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--avk-line);
+  border-radius: 999px;
+  font-size: 0.72rem;
+}
+
+.avk-catalog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: clamp(3rem, 6vw, 6rem);
+  color: inherit;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.avk-catalog-back:hover,
+.avk-catalog-back:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.avk-catalog-detail-heading h2 {
+  max-width: none;
+}
+
+.avk-catalog-groups {
+  display: grid;
+  gap: clamp(6rem, 10vw, 11rem);
+}
+
+.avk-catalog-group {
+  min-width: 0;
+}
+
+.avk-catalog-group-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--avk-line);
+}
+
+.avk-catalog-group-heading p,
+.avk-catalog-group-heading h3 {
+  margin: 0;
+}
+
+.avk-catalog-group-heading div > p,
+.avk-catalog-group-heading > p {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.avk-catalog-group-heading div > p {
+  margin-bottom: 0.55rem;
+  color: rgba(23, 24, 20, 0.58);
+}
+
+.avk-catalog-group-heading h3 {
+  font-size: clamp(1.8rem, 3vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.avk-catalog-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem) clamp(0.8rem, 1.4vw, 1.4rem);
+}
+
+.avk-catalog-gallery-item {
+  min-width: 0;
+  margin: 0;
+}
+
+.avk-catalog-gallery-media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e4e2da;
+}
+
+.avk-catalog-gallery-item figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--avk-line);
+  color: rgba(23, 24, 20, 0.65);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .avk-catalog-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .avk-catalog-index {
+    grid-template-columns: 1fr;
+  }
+
+  .avk-catalog-group-heading {
+    display: block;
+  }
+
+  .avk-catalog-group-heading > p {
+    margin-top: 0.75rem;
+  }
+}
+
 .avk-artwork {
   position: relative;
   width: 100%;

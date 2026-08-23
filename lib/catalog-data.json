@@ -1,0 +1,1260 @@
+{
+  "generatedFrom": "Factory Material",
+  "categories": [
+    {
+      "slug": "3d-print",
+      "title": "3D Print",
+      "imageCount": 12,
+      "videoCount": 0,
+      "cover": "/factory-material/3d-print/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 5,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/factory/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/factory/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/factory/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/factory/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/factory/005.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 7,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/3d-print/product/007.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aluminum-bottle",
+      "title": "Aluminum Bottle",
+      "imageCount": 16,
+      "videoCount": 1,
+      "cover": "/factory-material/aluminum-bottle/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 12,
+          "videoCount": 1,
+          "media": [
+            {
+              "kind": "video",
+              "src": "/factory-material/aluminum-bottle/factory/001.mp4"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/factory/013.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 4,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/aluminum-bottle/product/004.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ceramic",
+      "title": "Ceramic",
+      "imageCount": 8,
+      "videoCount": 0,
+      "cover": "/factory-material/ceramic/product/001.jpg",
+      "groups": [
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 8,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/ceramic/product/008.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "consumer-product",
+      "title": "Consumer Product",
+      "imageCount": 16,
+      "videoCount": 0,
+      "cover": "/factory-material/consumer-product/electronic-surfboard/001.jpg",
+      "groups": [
+        {
+          "slug": "electronic-surfboard",
+          "title": "Electronic Surfboard",
+          "imageCount": 4,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/electronic-surfboard/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/electronic-surfboard/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/electronic-surfboard/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/electronic-surfboard/004.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "fridge-magnets",
+          "title": "Fridge Magnets",
+          "imageCount": 5,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/fridge-magnets/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/fridge-magnets/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/fridge-magnets/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/fridge-magnets/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/fridge-magnets/005.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "keyboard",
+          "title": "Keyboard",
+          "imageCount": 2,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/keyboard/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/keyboard/002.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "warmer-and-fans",
+          "title": "Warmer And Fans",
+          "imageCount": 5,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/warmer-and-fans/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/warmer-and-fans/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/warmer-and-fans/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/warmer-and-fans/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/consumer-product/warmer-and-fans/005.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "dog-toys",
+      "title": "Dog Toys",
+      "imageCount": 74,
+      "videoCount": 0,
+      "cover": "/factory-material/dog-toys/product/dog-cloth/001.jpg",
+      "groups": [
+        {
+          "slug": "product/dog-cloth",
+          "title": "Product / Dog Cloth",
+          "imageCount": 60,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/013.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/014.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/015.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/016.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/017.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/018.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/019.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/020.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/021.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/022.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/023.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/024.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/025.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/026.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/027.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/028.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/029.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/030.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/031.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/032.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/033.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/034.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/035.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/036.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/037.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/038.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/039.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/040.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/041.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/042.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/043.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/044.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/045.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/046.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/047.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/048.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/049.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/050.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/051.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/052.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/053.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/054.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/055.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/056.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/057.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/058.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/059.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-cloth/060.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "product/dog-leash",
+          "title": "Product / Dog Leash",
+          "imageCount": 14,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/013.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/dog-toys/product/dog-leash/014.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fiber-carbon",
+      "title": "Fiber Carbon",
+      "imageCount": 3,
+      "videoCount": 0,
+      "cover": "/factory-material/fiber-carbon/gallery/001.jpg",
+      "groups": [
+        {
+          "slug": "gallery",
+          "title": "Gallery",
+          "imageCount": 3,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/fiber-carbon/gallery/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fiber-carbon/gallery/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fiber-carbon/gallery/003.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fitness-gloves",
+      "title": "Fitness Gloves",
+      "imageCount": 16,
+      "videoCount": 0,
+      "cover": "/factory-material/fitness-gloves/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 6,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/001.png"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/002.png"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/003.png"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/004.png"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/005.png"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/factory/006.png"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 10,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/fitness-gloves/product/010.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "leather-bag",
+      "title": "Leather Bag",
+      "imageCount": 11,
+      "videoCount": 2,
+      "cover": "/factory-material/leather-bag/gallery/003.jpg",
+      "groups": [
+        {
+          "slug": "gallery",
+          "title": "Gallery",
+          "imageCount": 11,
+          "videoCount": 2,
+          "media": [
+            {
+              "kind": "video",
+              "src": "/factory-material/leather-bag/gallery/001.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/leather-bag/gallery/002.mp4"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/leather-bag/gallery/013.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "puzzle",
+      "title": "Puzzle",
+      "imageCount": 67,
+      "videoCount": 0,
+      "cover": "/factory-material/puzzle/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 51,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/013.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/014.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/015.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/016.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/017.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/018.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/019.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/020.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/021.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/022.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/023.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/024.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/025.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/026.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/027.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/028.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/029.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/030.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/031.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/032.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/033.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/034.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/035.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/036.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/037.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/038.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/039.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/040.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/041.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/042.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/043.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/044.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/045.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/046.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/047.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/048.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/049.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/050.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/factory/051.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 16,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/013.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/014.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/015.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/puzzle/product/016.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stainless-steel",
+      "title": "Stainless Steel",
+      "imageCount": 10,
+      "videoCount": 2,
+      "cover": "/factory-material/stainless-steel/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 0,
+          "videoCount": 2,
+          "media": [
+            {
+              "kind": "video",
+              "src": "/factory-material/stainless-steel/factory/001.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/stainless-steel/factory/002.mp4"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 10,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/stainless-steel/product/010.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tissues-box",
+      "title": "Tissues Box",
+      "imageCount": 5,
+      "videoCount": 6,
+      "cover": "/factory-material/tissues-box/gallery/003.jpg",
+      "groups": [
+        {
+          "slug": "gallery",
+          "title": "Gallery",
+          "imageCount": 5,
+          "videoCount": 6,
+          "media": [
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/001.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/002.mp4"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/tissues-box/gallery/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/tissues-box/gallery/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/tissues-box/gallery/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/tissues-box/gallery/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/tissues-box/gallery/007.jpg"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/008.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/009.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/010.mp4"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/tissues-box/gallery/011.mp4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
