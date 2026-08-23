@@ -299,6 +299,8 @@ export default function SitePage({ content }: { content: SiteContent }) {
             style={{
               fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
               maxWidth: "none",
+              textAlign: "center",
+              textTransform: "uppercase",
               whiteSpace: "nowrap",
             }}
           >
