@@ -249,6 +249,41 @@ test("exports every primary navigation item as its own content page", async () =
   }
 });
 
+test("keeps standalone pages free of oversized navigation gaps", async () => {
+  const [siteCss, homeHtml] = await Promise.all([
+    source("app/site.css"),
+    source("out/index.html"),
+  ]);
+  const flushRoutes = ["catalog", "services", "work", "process"];
+  const compactRoutes = ["about", "contact"];
+
+  assert.match(
+    siteCss,
+    /\.avk-page-main\s*>\s*\.avk-page-section--flush\s*{[^}]*padding-top:\s*0;/s,
+  );
+  assert.match(
+    siteCss,
+    /\.avk-page-main\s*>\s*\.avk-page-section--compact\s*{[^}]*padding-top:\s*clamp\(1\.5rem,\s*2\.5vw,\s*2\.5rem\);/s,
+  );
+
+  for (const route of flushRoutes) {
+    const html = await source(`out/${route}/index.html`);
+    assert.match(html, /avk-page-section--flush/);
+    assert.doesNotMatch(html, /avk-page-section--compact/);
+  }
+
+  for (const route of compactRoutes) {
+    const html = await source(`out/${route}/index.html`);
+    assert.match(html, /avk-page-section--compact/);
+    assert.doesNotMatch(html, /avk-page-section--flush/);
+  }
+
+  const catalogDetailHtml = await source("out/catalog/3d-print/index.html");
+  assert.match(catalogDetailHtml, /avk-page-section--compact/);
+  assert.doesNotMatch(catalogDetailHtml, /avk-page-section--flush/);
+  assert.doesNotMatch(homeHtml, /avk-page-section--(?:flush|compact)/);
+});
+
 test("exports every factory-material folder as a complete catalog page", async () => {
   const { categories } = await catalogManifest();
   const catalogHtml = await source("out/catalog/index.html");
