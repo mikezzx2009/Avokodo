@@ -5,6 +5,11 @@ type SmartLinkProps = LinkItem & {
   children?: React.ReactNode;
 };
 
+type CatalogItem = Omit<ProjectItem, "image"> & {
+  productImage: ImageRef;
+  factoryImage: ImageRef;
+};
+
 const PRACTICE_PROJECTS: ProjectItem[] = [
   {
     id: "consumer-electronics",
@@ -44,41 +49,77 @@ const PRACTICE_PROJECTS: ProjectItem[] = [
   },
 ];
 
-const CATALOG_ITEMS: ProjectItem[] = [
+const CATALOG_ITEMS: CatalogItem[] = [
   {
-    id: "catalog-product-design",
-    title: "Product design",
-    category: "Catalog",
+    id: "catalog-3d-printing",
+    title: "3D printing",
+    category: "Product + factory",
     description:
-      "Early concepts, form development, and usability considered as a single product system.",
-    image: null,
+      "Colorful printed components paired with a view of the model finishing workspace.",
+    productImage: {
+      id: "catalog-3d-print-product",
+      url: "/catalog/3d-print-product.webp",
+      alt: "Colorful 3D-printed components",
+    },
+    factoryImage: {
+      id: "catalog-3d-print-factory",
+      url: "/catalog/3d-print-factory.webp",
+      alt: "3D-print model finishing workstation",
+    },
     href: null,
   },
   {
-    id: "catalog-engineering",
-    title: "Engineering",
-    category: "Catalog",
+    id: "catalog-aluminum-bottles",
+    title: "Aluminum bottles",
+    category: "Product + factory",
     description:
-      "Component architecture and design-for-manufacture thinking that supports real-world production.",
-    image: null,
+      "A range of finished aluminum bottles shown alongside the powder-coating line.",
+    productImage: {
+      id: "catalog-aluminum-bottle-product",
+      url: "/catalog/aluminum-bottle-product.webp",
+      alt: "Aluminum bottles in assorted colors",
+    },
+    factoryImage: {
+      id: "catalog-aluminum-bottle-factory",
+      url: "/catalog/aluminum-bottle-factory.webp",
+      alt: "Aluminum bottles on the factory powder-coating line",
+    },
     href: null,
   },
   {
-    id: "catalog-prototyping",
-    title: "Prototyping",
-    category: "Catalog",
+    id: "catalog-fitness-gloves",
+    title: "Fitness gloves",
+    category: "Product + factory",
     description:
-      "Practical development that helps validate a product before its next manufacturing step.",
-    image: null,
+      "Multiple fitness glove styles paired with a view of the factory material warehouse.",
+    productImage: {
+      id: "catalog-fitness-gloves-product",
+      url: "/catalog/fitness-gloves-product.webp",
+      alt: "Collection of fitness glove styles",
+    },
+    factoryImage: {
+      id: "catalog-fitness-gloves-factory",
+      url: "/catalog/fitness-gloves-factory.webp",
+      alt: "Factory warehouse storing materials for fitness gloves",
+    },
     href: null,
   },
   {
-    id: "catalog-factory-handoff",
-    title: "Factory handoff",
-    category: "Catalog",
+    id: "catalog-wooden-puzzles",
+    title: "Wooden puzzles",
+    category: "Product + factory",
     description:
-      "Production-ready detail, material direction, and finish considerations for the final product.",
-    image: null,
+      "A finished wooden puzzle paired with CNC woodworking on the factory floor.",
+    productImage: {
+      id: "catalog-puzzle-product",
+      url: "/catalog/puzzle-product.webp",
+      alt: "Finished wooden barrel puzzle",
+    },
+    factoryImage: {
+      id: "catalog-puzzle-factory",
+      url: "/catalog/puzzle-factory.webp",
+      alt: "CNC machine processing wooden puzzle parts",
+    },
     href: null,
   },
 ];
@@ -106,10 +147,12 @@ function ImageOrArtwork({
   image,
   variant,
   eager = false,
+  fit = "cover",
 }: {
   image: ImageRef | null;
   variant: number;
   eager?: boolean;
+  fit?: "cover" | "contain";
 }) {
   if (image?.url) {
     return (
@@ -121,6 +164,7 @@ function ImageOrArtwork({
         alt={image.alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
+        style={{ display: "block", height: "100%", objectFit: fit, width: "100%" }}
       />
     );
   }
@@ -161,6 +205,53 @@ function ProjectMedia({ project, index }: { project: ProjectItem; index: number 
     >
       {media}
     </a>
+  );
+}
+
+function CatalogMediaPair({ item, index }: { item: CatalogItem; index: number }) {
+  const media = [
+    { label: "Product", image: item.productImage },
+    { label: "Factory", image: item.factoryImage },
+  ];
+
+  return (
+    <div
+      className="avk-catalog-pair"
+      style={{
+        display: "grid",
+        gap: "0.75rem",
+        gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))",
+      }}
+    >
+      {media.map(({ label, image }, mediaIndex) => (
+        <figure
+          className="avk-catalog-figure"
+          key={label}
+          style={{ margin: 0, minWidth: 0 }}
+        >
+          <div
+            className="avk-catalog-media"
+            style={{ aspectRatio: "4 / 3", overflow: "hidden" }}
+          >
+            <ImageOrArtwork
+              image={image}
+              variant={((index + mediaIndex) % 4) + 1}
+              fit="contain"
+            />
+          </div>
+          <figcaption
+            style={{
+              fontSize: "0.72rem",
+              letterSpacing: "0.12em",
+              marginTop: "0.5rem",
+              textTransform: "uppercase",
+            }}
+          >
+            {label}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   );
 }
 
@@ -264,7 +355,7 @@ export default function SitePage({ content }: { content: SiteContent }) {
           <div className="avk-project-grid">
             {CATALOG_ITEMS.map((item, index) => (
               <article className="avk-project" key={item.id}>
-                <ProjectMedia project={item} index={index} />
+                <CatalogMediaPair item={item} index={index} />
                 <div className="avk-project-meta">
                   <h3>{item.title}</h3>
                   <p>{item.category}</p>
@@ -400,4 +491,3 @@ export default function SitePage({ content }: { content: SiteContent }) {
     </div>
   );
 }
-
