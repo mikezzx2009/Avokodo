@@ -319,7 +319,7 @@ export default function SitePage({
   const { site, navigation, hero, about, services, work, process, contact, footer } =
     content;
   const displayedProjects = work.items.length ? work.items : PRACTICE_PROJECTS;
-  const shows = (target: SectionSlug) => section === target;
+  const shows = (target: SectionSlug) => !section || section === target;
 
   return (
     <div className="avk-site" id="top">
