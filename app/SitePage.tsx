@@ -346,7 +346,12 @@ export default function SitePage({ content }: { content: SiteContent }) {
         >
           <div className="avk-section-heading">
             <p className="avk-eyebrow">Catalog</p>
-            <h2 id="catalog-title">PRODUCT AND FACTORY</h2>
+            <h2
+              id="catalog-title"
+              style={{ fontSize: "clamp(1.2rem, 3.2vw, 2.5rem)", whiteSpace: "nowrap" }}
+            >
+              PRODUCT AND FACTORY
+            </h2>
             <p className="avk-section-intro">
               A focused overview of product development and factory-ready production.
             </p>
