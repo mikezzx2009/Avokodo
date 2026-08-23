@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ImageRef, LinkItem, ProjectItem, SiteContent } from "@/lib/content";
+import type { CatalogCategory } from "@/lib/catalog";
+import { CatalogCategoryView, CatalogIndex } from "./CatalogLibrary";
 
 type SmartLinkProps = LinkItem & {
   className?: string;
@@ -23,11 +25,6 @@ const SECTION_SLUGS = new Set<SectionSlug>([
   "process",
   "contact",
 ]);
-
-type CatalogItem = Omit<ProjectItem, "image"> & {
-  productImage: ImageRef;
-  factoryImage: ImageRef;
-};
 
 const PRACTICE_PROJECTS: ProjectItem[] = [
   {
@@ -64,81 +61,6 @@ const PRACTICE_PROJECTS: ProjectItem[] = [
     description:
       "Design-for-manufacture thinking that carries a concept toward an achievable physical product.",
     image: null,
-    href: null,
-  },
-];
-
-const CATALOG_ITEMS: CatalogItem[] = [
-  {
-    id: "catalog-3d-printing",
-    title: "3D printing",
-    category: "Product + factory",
-    description:
-      "Colorful printed components paired with a view of the model finishing workspace.",
-    productImage: {
-      id: "catalog-3d-print-product",
-      url: "/catalog/3d-print-product.webp",
-      alt: "Colorful 3D-printed components",
-    },
-    factoryImage: {
-      id: "catalog-3d-print-factory",
-      url: "/catalog/3d-print-factory.webp",
-      alt: "3D-print model finishing workstation",
-    },
-    href: null,
-  },
-  {
-    id: "catalog-aluminum-bottles",
-    title: "Aluminum bottles",
-    category: "Product + factory",
-    description:
-      "A range of finished aluminum bottles shown alongside the powder-coating line.",
-    productImage: {
-      id: "catalog-aluminum-bottle-product",
-      url: "/catalog/aluminum-bottle-product.webp",
-      alt: "Aluminum bottles in assorted colors",
-    },
-    factoryImage: {
-      id: "catalog-aluminum-bottle-factory",
-      url: "/catalog/aluminum-bottle-factory.webp",
-      alt: "Aluminum bottles on the factory powder-coating line",
-    },
-    href: null,
-  },
-  {
-    id: "catalog-fitness-gloves",
-    title: "Fitness gloves",
-    category: "Product + factory",
-    description:
-      "Multiple fitness glove styles paired with a view of the factory material warehouse.",
-    productImage: {
-      id: "catalog-fitness-gloves-product",
-      url: "/catalog/fitness-gloves-product.webp",
-      alt: "Collection of fitness glove styles",
-    },
-    factoryImage: {
-      id: "catalog-fitness-gloves-factory",
-      url: "/catalog/fitness-gloves-factory.webp",
-      alt: "Factory warehouse storing materials for fitness gloves",
-    },
-    href: null,
-  },
-  {
-    id: "catalog-wooden-puzzles",
-    title: "Wooden puzzles",
-    category: "Product + factory",
-    description:
-      "A finished wooden puzzle paired with CNC woodworking on the factory floor.",
-    productImage: {
-      id: "catalog-puzzle-product",
-      url: "/catalog/puzzle-product.webp",
-      alt: "Finished wooden barrel puzzle",
-    },
-    factoryImage: {
-      id: "catalog-puzzle-factory",
-      url: "/catalog/puzzle-factory.webp",
-      alt: "CNC machine processing wooden puzzle parts",
-    },
     href: null,
   },
 ];
@@ -262,64 +184,19 @@ function ProjectMedia({ project, index }: { project: ProjectItem; index: number 
   );
 }
 
-function CatalogMediaPair({ item, index }: { item: CatalogItem; index: number }) {
-  const media = [
-    { label: "Product", image: item.productImage },
-    { label: "Factory", image: item.factoryImage },
-  ];
-
-  return (
-    <div
-      className="avk-catalog-pair"
-      style={{
-        display: "grid",
-        gap: "0.75rem",
-        gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))",
-      }}
-    >
-      {media.map(({ label, image }, mediaIndex) => (
-        <figure
-          className="avk-catalog-figure"
-          key={label}
-          style={{ margin: 0, minWidth: 0 }}
-        >
-          <div
-            className="avk-catalog-media"
-            style={{ aspectRatio: "4 / 3", overflow: "hidden" }}
-          >
-            <ImageOrArtwork
-              image={image}
-              variant={((index + mediaIndex) % 4) + 1}
-              fit="contain"
-            />
-          </div>
-          <figcaption
-            style={{
-              fontSize: "0.72rem",
-              letterSpacing: "0.12em",
-              marginTop: "0.5rem",
-              textTransform: "uppercase",
-            }}
-          >
-            {label}
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  );
-}
-
 export default function SitePage({
   content,
   section,
+  catalogCategory,
 }: {
   content: SiteContent;
   section?: SectionSlug;
+  catalogCategory?: CatalogCategory;
 }) {
   const { site, navigation, hero, about, services, work, process, contact, footer } =
     content;
   const displayedProjects = work.items.length ? work.items : PRACTICE_PROJECTS;
-  const shows = (target: SectionSlug) => !section || section === target;
+  const shows = (target: SectionSlug) => section === target;
 
   return (
     <div className="avk-site" id="top">
@@ -328,7 +205,11 @@ export default function SitePage({
       </a>
 
       <header className="avk-header">
-        <Link className="avk-wordmark" href="/" aria-label={`${site.name.toUpperCase()} home`}>
+        <Link
+          className="avk-wordmark"
+          href="/"
+          aria-label={`${site.name.toUpperCase()} home`}
+        >
           <span className="avk-wordmark-seed" aria-hidden="true" />
           {site.name.toUpperCase()}
         </Link>
@@ -435,31 +316,11 @@ export default function SitePage({
           id="catalog"
           aria-labelledby="catalog-title"
         >
-          <div className="avk-section-heading">
-            <p className="avk-eyebrow">Catalog</p>
-            <h2
-              id="catalog-title"
-              style={{ fontSize: "clamp(1.2rem, 3.2vw, 2.5rem)", whiteSpace: "nowrap" }}
-            >
-              PRODUCT AND FACTORY
-            </h2>
-            <p className="avk-section-intro">
-              A focused overview of product development and factory-ready production.
-            </p>
-          </div>
-
-          <div className="avk-project-grid">
-            {CATALOG_ITEMS.map((item, index) => (
-              <article className="avk-project" key={item.id}>
-                <CatalogMediaPair item={item} index={index} />
-                <div className="avk-project-meta">
-                  <h3>{item.title}</h3>
-                  <p>{item.category}</p>
-                </div>
-                <p className="avk-project-description">{item.description}</p>
-              </article>
-            ))}
-          </div>
+          {catalogCategory ? (
+            <CatalogCategoryView category={catalogCategory} />
+          ) : (
+            <CatalogIndex />
+          )}
         </section>
         ) : null}
 

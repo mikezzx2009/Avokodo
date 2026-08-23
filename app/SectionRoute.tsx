@@ -9,7 +9,7 @@ const SECTION_DETAILS: Record<
   catalog: {
     title: "Catalog",
     description:
-      "Explore Avokodo product-development examples alongside their factory and production context.",
+      "Browse Avokodo product and factory material by category, with complete image and video collections organized by source folder.",
   },
   about: {
     title: "About",

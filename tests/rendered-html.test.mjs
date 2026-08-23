@@ -12,6 +12,10 @@ async function contentModule() {
   return import(new URL("lib/content.ts", root));
 }
 
+async function catalogManifest() {
+  return JSON.parse(await source("lib/catalog-data.json"));
+}
+
 function contentImages(content) {
   return [
     content.hero.image,
@@ -218,7 +222,7 @@ test("keeps the homepage focused while section pages retain their content", asyn
 
 test("exports every primary navigation item as its own content page", async () => {
   const routes = {
-    catalog: "PRODUCT AND FACTORY",
+    catalog: "Browse the material library by folder.",
     about: "One connected path from design intent to manufactured detail.",
     services: "From the first line on paper to production on the floor.",
     work: "Selected products, from concept to manufacture.",
@@ -242,6 +246,58 @@ test("exports every primary navigation item as its own content page", async () =
     );
     assert.doesNotMatch(html, /Products, designed all the way to production\./);
     for (const link of expectedLinks) assert.match(html, new RegExp(link));
+  }
+});
+
+test("exports every factory-material folder as a complete catalog page", async () => {
+  const { categories } = await catalogManifest();
+  const catalogHtml = await source("out/catalog/index.html");
+  const printCategory = categories.find((category) => category.slug === "3d-print");
+
+  assert.equal(categories.length, 11);
+  assert.equal(
+    categories.reduce((total, category) => total + category.imageCount, 0),
+    238,
+  );
+  assert.equal(
+    categories.reduce((total, category) => total + category.videoCount, 0),
+    11,
+  );
+  assert.equal(
+    printCategory.groups.find((group) => group.slug === "product").imageCount,
+    7,
+  );
+  assert.equal(
+    printCategory.groups.find((group) => group.slug === "factory").imageCount,
+    5,
+  );
+
+  for (const category of categories) {
+    const routeHref = `/catalog/${category.slug}/`;
+    const detailHtml = await source(`out/catalog/${category.slug}/index.html`);
+
+    assert.match(catalogHtml, new RegExp(`href="${routeHref}"`));
+    assert.match(detailHtml, new RegExp(category.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      detailHtml,
+      new RegExp(
+        `<link rel="canonical" href="https://www\\.avokodotech\\.com${routeHref}"`,
+      ),
+    );
+
+    for (const group of category.groups) {
+      assert.match(
+        detailHtml,
+        new RegExp(group.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+      );
+
+      for (const media of group.media) {
+        const escapedPath = media.src.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        assert.match(detailHtml, new RegExp(escapedPath));
+        await access(new URL(`public${media.src}`, root));
+        await access(new URL(`out${media.src}`, root));
+      }
+    }
   }
 });
 
