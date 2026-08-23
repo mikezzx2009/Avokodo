@@ -1,28 +1,9 @@
-import Link from "next/link";
 import type { ImageRef, LinkItem, ProjectItem, SiteContent } from "@/lib/content";
 
 type SmartLinkProps = LinkItem & {
   className?: string;
   children?: React.ReactNode;
-  currentSection?: SectionSlug;
 };
-
-export type SectionSlug =
-  | "catalog"
-  | "about"
-  | "services"
-  | "work"
-  | "process"
-  | "contact";
-
-const SECTION_SLUGS = new Set<SectionSlug>([
-  "catalog",
-  "about",
-  "services",
-  "work",
-  "process",
-  "contact",
-]);
 
 type CatalogItem = Omit<ProjectItem, "image"> & {
   productImage: ImageRef;
@@ -147,52 +128,17 @@ function isExternal(href: string) {
   return /^https?:\/\//i.test(href);
 }
 
-function sectionFromHref(href: string): SectionSlug | null {
-  const match = href.match(/^(?:#|\/)(catalog|about|services|work|process|contact)\/?$/);
-  const section = match?.[1];
-  return section && SECTION_SLUGS.has(section as SectionSlug)
-    ? (section as SectionSlug)
-    : null;
-}
-
-function pageHref(href: string) {
-  const section = sectionFromHref(href);
-  return section ? `/${section}/` : href;
-}
-
-function SmartLink({
-  href,
-  label,
-  className,
-  children,
-  currentSection,
-}: SmartLinkProps) {
-  const resolvedHref = pageHref(href);
-  const external = isExternal(resolvedHref);
-  const linkedSection = sectionFromHref(resolvedHref);
-  const content = children ?? label;
-
-  if (resolvedHref.startsWith("/")) {
-    return (
-      <Link
-        className={className}
-        href={resolvedHref}
-        aria-current={linkedSection === currentSection ? "page" : undefined}
-      >
-        {content}
-      </Link>
-    );
-  }
+function SmartLink({ href, label, className, children }: SmartLinkProps) {
+  const external = isExternal(href);
 
   return (
     <a
       className={className}
-      href={resolvedHref}
-      aria-current={linkedSection === currentSection ? "page" : undefined}
+      href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
     >
-      {content}
+      {children ?? label}
     </a>
   );
 }
@@ -309,37 +255,27 @@ function CatalogMediaPair({ item, index }: { item: CatalogItem; index: number })
   );
 }
 
-export default function SitePage({
-  content,
-  section,
-}: {
-  content: SiteContent;
-  section?: SectionSlug;
-}) {
+export default function SitePage({ content }: { content: SiteContent }) {
   const { site, navigation, hero, about, services, work, process, contact, footer } =
     content;
   const displayedProjects = work.items.length ? work.items : PRACTICE_PROJECTS;
-  const shows = (target: SectionSlug) => !section || section === target;
 
   return (
-    <div className="avk-site" id="top">
+    <div className="avk-site">
       <a className="avk-skip-link" href="#main-content">
         Skip to content
       </a>
 
       <header className="avk-header">
-        <Link className="avk-wordmark" href="/" aria-label={`${site.name} home`}>
+        <a className="avk-wordmark" href="#top" aria-label={`${site.name} home`}>
           <span className="avk-wordmark-seed" aria-hidden="true" />
           {site.name}
-        </Link>
+        </a>
 
         <nav className="avk-nav" aria-label="Primary navigation">
+          <SmartLink href="#catalog" label="Catalog" />
           {navigation.map((item) => (
-            <SmartLink
-              key={`${item.label}-${item.href}`}
-              {...item}
-              currentSection={section}
-            />
+            <SmartLink key={`${item.label}-${item.href}`} {...item} />
           ))}
         </nav>
 
@@ -351,9 +287,8 @@ export default function SitePage({
         </SmartLink>
       </header>
 
-      <main className={section ? "avk-page-main" : undefined} id="main-content">
-        {!section ? (
-        <section className="avk-hero" aria-labelledby="hero-title">
+      <main id="main-content">
+        <section className="avk-hero" id="top" aria-labelledby="hero-title">
           <div className="avk-rule-label">
             <span>{hero.eyebrow}</span>
             <span>{site.tagline}</span>
@@ -393,13 +328,22 @@ export default function SitePage({
             </div>
           </div>
         </section>
-        ) : null}
 
-        {shows("work") ? (
         <section className="avk-work avk-section" id="work" aria-labelledby="work-title">
           <div className="avk-section-heading">
             <p className="avk-eyebrow">{work.eyebrow}</p>
-            <h2 id="work-title">{work.title}</h2>
+            <h2
+              id="work-title"
+              style={{
+                fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
+                maxWidth: "none",
+                textAlign: "center",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {work.title}
+            </h2>
             <p className="avk-section-intro">{work.intro}</p>
           </div>
 
@@ -416,9 +360,7 @@ export default function SitePage({
             ))}
           </div>
         </section>
-        ) : null}
 
-        {shows("catalog") ? (
         <section
           className="avk-work avk-section"
           id="catalog"
@@ -450,9 +392,7 @@ export default function SitePage({
             ))}
           </div>
         </section>
-        ) : null}
 
-        {shows("services") ? (
         <section
           className="avk-services avk-section avk-section--ink"
           id="services"
@@ -481,9 +421,7 @@ export default function SitePage({
             ))}
           </div>
         </section>
-        ) : null}
 
-        {shows("about") ? (
         <section className="avk-about avk-section" id="about" aria-labelledby="about-title">
           <div className="avk-about-copy">
             <p className="avk-eyebrow">{about.eyebrow}</p>
@@ -510,9 +448,7 @@ export default function SitePage({
             </dl>
           ) : null}
         </section>
-        ) : null}
 
-        {shows("process") ? (
         <section className="avk-process avk-section" id="process" aria-labelledby="process-title">
           <div className="avk-section-heading avk-section-heading--split">
             <p className="avk-eyebrow">{process.eyebrow}</p>
@@ -530,9 +466,7 @@ export default function SitePage({
             ))}
           </ol>
         </section>
-        ) : null}
 
-        {shows("contact") ? (
         <section className="avk-contact" id="contact" aria-labelledby="contact-title">
           <p className="avk-eyebrow">{contact.eyebrow}</p>
           <h2 id="contact-title">{contact.title}</h2>
@@ -556,26 +490,21 @@ export default function SitePage({
             </div>
           </div>
         </section>
-        ) : null}
       </main>
 
       <footer className="avk-footer">
         <div className="avk-footer-brand">
-          <Link className="avk-wordmark avk-wordmark--footer" href="/">
+          <a className="avk-wordmark avk-wordmark--footer" href="#top">
             <span className="avk-wordmark-seed" aria-hidden="true" />
             {site.name}
-          </Link>
+          </a>
           <p>{footer.tagline || site.tagline}</p>
         </div>
 
         <nav className="avk-footer-links" aria-label="Footer navigation">
-          <SmartLink href="/catalog/" label="Catalog" currentSection={section} />
+          <SmartLink href="#catalog" label="Catalog" />
           {footer.links.map((item) => (
-            <SmartLink
-              key={`${item.label}-${item.href}`}
-              {...item}
-              currentSection={section}
-            />
+            <SmartLink key={`${item.label}-${item.href}`} {...item} />
           ))}
         </nav>
 
