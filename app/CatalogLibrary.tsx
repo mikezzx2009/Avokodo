@@ -71,9 +71,11 @@ function CatalogMediaItem({
 export function CatalogIndex() {
   return (
     <>
-      <div className="avk-section-heading">
+      <div className="avk-section-heading avk-page-heading">
         <p className="avk-eyebrow">Catalog</p>
-        <h2 id="catalog-title">Product &amp; Factory Library</h2>
+        <h2 className="avk-page-title" id="catalog-title">
+          Product &amp; Factory Library
+        </h2>
         <p className="avk-section-intro">
           Browse the material library by folder. Each category opens into its full
           collection of product, factory, and supporting media.
@@ -120,9 +122,11 @@ export function CatalogCategoryView({ category }: { category: CatalogCategory })
         All catalog categories
       </Link>
 
-      <div className="avk-section-heading avk-catalog-detail-heading">
+      <div className="avk-section-heading avk-page-heading avk-catalog-detail-heading">
         <p className="avk-eyebrow">Catalog / {category.title}</p>
-        <h2 id="catalog-title">{category.title}</h2>
+        <h2 className="avk-page-title" id="catalog-title">
+          {category.title}
+        </h2>
         <p className="avk-section-intro">
           {mediaCountLabel(category.imageCount, category.videoCount)} organized in the
           same folder structure as the source material.

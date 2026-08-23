@@ -241,14 +241,8 @@ export default function SitePage({
           </div>
 
           <h1
+            className="avk-page-title avk-page-title--uppercase"
             id="hero-title"
-            style={{
-              fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
-              maxWidth: "none",
-              textAlign: "center",
-              textTransform: "uppercase",
-              whiteSpace: "nowrap",
-            }}
           >
             {hero.title}
           </h1>
@@ -282,17 +276,11 @@ export default function SitePage({
           id="work"
           aria-labelledby="work-title"
         >
-          <div className="avk-section-heading">
+          <div className="avk-section-heading avk-page-heading">
             <p className="avk-eyebrow">{work.eyebrow}</p>
             <h2
+              className="avk-page-title avk-page-title--uppercase"
               id="work-title"
-              style={{
-                fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
-                maxWidth: "none",
-                textAlign: "center",
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-              }}
             >
               {work.title}
             </h2>
@@ -338,9 +326,11 @@ export default function SitePage({
           id="services"
           aria-labelledby="services-title"
         >
-          <div className="avk-section-heading avk-section-heading--split">
+          <div className="avk-section-heading avk-page-heading avk-section-heading--split">
             <p className="avk-eyebrow">{services.eyebrow}</p>
-            <h2 id="services-title">{services.title}</h2>
+            <h2 className="avk-page-title" id="services-title">
+              {services.title}
+            </h2>
             <p className="avk-section-intro">{services.intro}</p>
           </div>
 
@@ -369,9 +359,14 @@ export default function SitePage({
           id="about"
           aria-labelledby="about-title"
         >
-          <div className="avk-about-copy">
+          <div className="avk-section-heading avk-page-heading avk-page-heading--plain avk-about-heading">
             <p className="avk-eyebrow">{about.eyebrow}</p>
-            <h2 id="about-title">{about.title}</h2>
+            <h2 className="avk-page-title" id="about-title">
+              {about.title}
+            </h2>
+          </div>
+
+          <div className="avk-about-copy">
             <div className="avk-about-paragraphs">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -402,9 +397,11 @@ export default function SitePage({
           id="process"
           aria-labelledby="process-title"
         >
-          <div className="avk-section-heading avk-section-heading--split">
+          <div className="avk-section-heading avk-page-heading avk-section-heading--split">
             <p className="avk-eyebrow">{process.eyebrow}</p>
-            <h2 id="process-title">{process.title}</h2>
+            <h2 className="avk-page-title" id="process-title">
+              {process.title}
+            </h2>
             <p className="avk-section-intro">{process.intro}</p>
           </div>
 
@@ -426,8 +423,12 @@ export default function SitePage({
           id="contact"
           aria-labelledby="contact-title"
         >
-          <p className="avk-eyebrow">{contact.eyebrow}</p>
-          <h2 id="contact-title">{contact.title}</h2>
+          <div className="avk-section-heading avk-page-heading avk-page-heading--plain">
+            <p className="avk-eyebrow">{contact.eyebrow}</p>
+            <h2 className="avk-page-title" id="contact-title">
+              {contact.title}
+            </h2>
+          </div>
           <div className="avk-contact-bottom">
             <p>{contact.description}</p>
             <div className="avk-contact-actions">
