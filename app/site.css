@@ -286,6 +286,21 @@
   padding-top: clamp(6rem, 10vw, 11rem);
 }
 
+.avk-page-main .avk-catalog-index-section {
+  padding-top: 0;
+}
+
+.avk-page-main .avk-catalog-index-section > .avk-section-heading {
+  border-top: 0;
+}
+
+.avk-page-main
+  .avk-catalog-index-section
+  > .avk-section-heading
+  > #catalog-title {
+  text-align: center;
+}
+
 .avk-section-heading {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1261,7 +1276,7 @@
 
 @media (min-width: 761px) {
   #catalog > .avk-section-heading:not(.avk-catalog-detail-heading) > #catalog-title {
-    font-size: clamp(2.25rem, 3.1vw, 4rem);
+    font-size: clamp(2.5rem, 3.8vw, 5.5rem);
   }
 
   #services-title,
@@ -1272,6 +1287,16 @@
   #about-title {
     max-width: none;
     font-size: clamp(1.125rem, 2vw, 2.8rem);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1020px) {
+  .avk-catalog-index-section > .avk-section-heading > .avk-eyebrow {
+    grid-column: 1 / span 2;
+  }
+
+  .avk-catalog-index-section > .avk-section-heading > #catalog-title {
+    grid-column: 3 / span 8;
   }
 }
 
@@ -1431,6 +1456,10 @@
 
   .avk-section-heading h2 {
     font-size: clamp(2.8rem, 13vw, 4.8rem);
+  }
+
+  .avk-catalog-index-section > .avk-section-heading > #catalog-title {
+    font-size: clamp(2.4rem, 13vw, 4.8rem);
   }
 
   .avk-section-intro {
