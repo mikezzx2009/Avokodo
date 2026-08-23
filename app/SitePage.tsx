@@ -312,7 +312,11 @@ export default function SitePage({
 
         {shows("catalog") ? (
         <section
-          className="avk-work avk-section"
+          className={
+            catalogCategory
+              ? "avk-work avk-section"
+              : "avk-work avk-section avk-catalog-index-section"
+          }
           id="catalog"
           aria-labelledby="catalog-title"
         >
