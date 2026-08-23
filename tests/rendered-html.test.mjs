@@ -179,7 +179,7 @@ test("keeps published content validation bounded", async () => {
   );
 });
 
-test("keeps the homepage focused while section pages retain their content", async () => {
+test("keeps the homepage comprehensive while section pages retain their content", async () => {
   const { PUBLISHED_SITE_CONTENT } = await contentModule();
   const [homeHtml, aboutHtml, workHtml] = await Promise.all([
     source("out/index.html"),
@@ -188,16 +188,21 @@ test("keeps the homepage focused while section pages retain their content", asyn
   ]);
   const homeMarkup = homeHtml.split("<script>(self.__next_f")[0];
 
-  assert.match(homeMarkup, /Products, designed all the way to production\./);
-  assert.doesNotMatch(
-    homeMarkup,
-    /id="(?:catalog|about|services|work|process|contact)"/,
-  );
-  assert.doesNotMatch(homeMarkup, /High-end personal accessories/);
-  assert.doesNotMatch(
-    homeMarkup,
-    /Upwork Job Success|Top Rated|PRODUCT AND FACTORY/,
-  );
+  assert.match(homeMarkup, /Products &amp; designed all the way to production/);
+  for (const section of [
+    "catalog",
+    "about",
+    "services",
+    "work",
+    "process",
+    "contact",
+  ]) {
+    assert.match(homeMarkup, new RegExp(`id="${section}"`));
+  }
+  assert.match(homeMarkup, /High-end personal accessories/);
+  assert.match(homeMarkup, /Upwork Job Success/);
+  assert.match(homeMarkup, /Top Rated/);
+  assert.match(homeMarkup, /PRODUCT AND FACTORY/);
   assert.doesNotMatch(homeHtml, /\/api\/admin|\/media\/|signin-with-chatgpt/);
 
   assert.match(workHtml, /High-end personal accessories/);
@@ -240,7 +245,7 @@ test("exports every primary navigation item as its own content page", async () =
         `<link rel="canonical" href="https://www\\.avokodotech\\.com/${route}/"`,
       ),
     );
-    assert.doesNotMatch(html, /Products, designed all the way to production\./);
+    assert.doesNotMatch(html, /Products &amp; designed all the way to production/);
     for (const link of expectedLinks) assert.match(html, new RegExp(link));
   }
 });
@@ -266,3 +271,4 @@ test("exports the Avokodo browser tab icon", async () => {
   assert.match(exportedIcon, /#c8ef68/);
   assert.match(exportedIcon, /#59714a/);
 });
+
