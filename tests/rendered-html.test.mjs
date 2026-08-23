@@ -192,7 +192,7 @@ test("keeps the homepage focused while section pages retain their content", asyn
   ]);
   const homeMarkup = homeHtml.split("<script>(self.__next_f")[0];
 
-  assert.match(homeMarkup, /Products, designed all the way to production\./);
+  assert.match(homeMarkup, /Products &amp; designed all the way to production/);
   assert.doesNotMatch(
     homeMarkup,
     /id="(?:catalog|about|services|work|process|contact)"/,
@@ -244,7 +244,7 @@ test("exports every primary navigation item as its own content page", async () =
         `<link rel="canonical" href="https://www\\.avokodotech\\.com/${route}/"`,
       ),
     );
-    assert.doesNotMatch(html, /Products, designed all the way to production\./);
+    assert.doesNotMatch(html, /Products &amp; designed all the way to production/);
     for (const link of expectedLinks) assert.match(html, new RegExp(link));
   }
 });
