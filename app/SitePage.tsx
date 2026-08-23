@@ -294,7 +294,16 @@ export default function SitePage({ content }: { content: SiteContent }) {
             <span>{site.tagline}</span>
           </div>
 
-          <h1 id="hero-title">{hero.title}</h1>
+          <h1
+            id="hero-title"
+            style={{
+              fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
+              maxWidth: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {hero.title}
+          </h1>
 
           <div className="avk-hero-bottom">
             <div className="avk-hero-visual">
