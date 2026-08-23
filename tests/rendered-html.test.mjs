@@ -284,6 +284,43 @@ test("keeps standalone pages free of oversized navigation gaps", async () => {
   assert.doesNotMatch(homeHtml, /avk-page-section--(?:flush|compact)/);
 });
 
+test("uses one centered title system across every public page", async () => {
+  const [siteCss, { categories }] = await Promise.all([
+    source("app/site.css"),
+    catalogManifest(),
+  ]);
+  const routes = [
+    ["out/index.html", "hero-title"],
+    ["out/catalog/index.html", "catalog-title"],
+    ["out/about/index.html", "about-title"],
+    ["out/services/index.html", "services-title"],
+    ["out/work/index.html", "work-title"],
+    ["out/process/index.html", "process-title"],
+    ["out/contact/index.html", "contact-title"],
+    ...categories.map((category) => [
+      `out/catalog/${category.slug}/index.html`,
+      "catalog-title",
+    ]),
+  ];
+
+  assert.match(
+    siteCss,
+    /\.avk-site\s+\.avk-page-title\s*{[^}]*font-size:\s*clamp\(3\.25rem,\s*6vw,\s*6\.5rem\);[^}]*text-align:\s*center;/s,
+  );
+
+  for (const [path, titleId] of routes) {
+    const html = (await source(path)).split("<script>(self.__next_f")[0];
+    const titleTag = html.match(
+      new RegExp(
+        `<h[12](?=[^>]*\\bid="${titleId}")(?=[^>]*\\bclass="[^"]*\\bavk-page-title(?:\\s|\\b)[^"]*")[^>]*>`,
+      ),
+    )?.[0];
+
+    assert.ok(titleTag, `${path} should expose ${titleId} as an avk-page-title`);
+    assert.doesNotMatch(titleTag, /\sstyle=/);
+  }
+});
+
 test("exports every factory-material folder as a complete catalog page", async () => {
   const { categories } = await catalogManifest();
   const catalogHtml = await source("out/catalog/index.html");

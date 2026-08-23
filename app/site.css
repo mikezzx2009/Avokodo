@@ -211,16 +211,6 @@
   content: "";
 }
 
-.avk-hero h1 {
-  max-width: 12.5ch;
-  margin: 0;
-  font-size: clamp(3.65rem, 7.65vw, 8.9rem);
-  font-weight: 430;
-  letter-spacing: -0.075em;
-  line-height: 0.89;
-  text-wrap: balance;
-}
-
 .avk-hero-bottom {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -296,13 +286,6 @@
   padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
-.avk-page-main
-  .avk-catalog-index-section
-  > .avk-section-heading
-  > #catalog-title {
-  text-align: center;
-}
-
 .avk-section-heading {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -327,11 +310,6 @@
 .avk-section-heading h2 {
   grid-column: 4 / span 6;
   margin: 0;
-  font-size: clamp(3rem, 5vw, 6.2rem);
-  font-weight: 430;
-  letter-spacing: -0.065em;
-  line-height: 0.95;
-  text-wrap: balance;
 }
 
 .avk-section-intro {
@@ -339,6 +317,53 @@
   margin: 0;
   font-size: 0.98rem;
   line-height: 1.55;
+}
+
+.avk-site .avk-page-title {
+  width: 100%;
+  max-width: 26ch;
+  margin: 0 auto;
+  font-family: inherit;
+  font-size: clamp(3.25rem, 6vw, 6.5rem);
+  font-weight: 430;
+  letter-spacing: -0.065em;
+  line-height: 0.94;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.avk-page-title--uppercase {
+  text-transform: uppercase;
+}
+
+.avk-page-heading {
+  align-items: start;
+}
+
+.avk-page-heading > .avk-eyebrow {
+  grid-row: 1;
+}
+
+.avk-page-heading > .avk-page-title {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  margin-top: clamp(1.5rem, 3vw, 3rem);
+}
+
+.avk-page-heading > .avk-section-intro {
+  width: 100%;
+  max-width: 42rem;
+  grid-row: 3;
+  grid-column: 4 / span 6;
+  justify-self: center;
+  margin-top: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.avk-page-heading--plain {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .avk-project-grid {
@@ -578,10 +603,6 @@
 .avk-catalog-back:focus-visible {
   text-decoration: underline;
   text-underline-offset: 0.3em;
-}
-
-.avk-catalog-detail-heading h2 {
-  max-width: none;
 }
 
 .avk-catalog-groups {
@@ -989,18 +1010,12 @@
   grid-column: 1 / span 7;
 }
 
-.avk-about-copy .avk-eyebrow {
-  margin-bottom: clamp(3rem, 6vw, 6rem);
+.avk-about-heading {
+  grid-column: 1 / -1;
 }
 
-.avk-about h2 {
-  max-width: 12ch;
-  margin: 0;
-  font-size: clamp(3rem, 5.7vw, 7rem);
-  font-weight: 430;
-  letter-spacing: -0.07em;
-  line-height: 0.93;
-  text-wrap: balance;
+.avk-about-copy > .avk-about-paragraphs {
+  margin-top: 0;
 }
 
 .avk-about-paragraphs {
@@ -1128,16 +1143,6 @@
 
 .avk-contact .avk-eyebrow::before {
   background: var(--avk-ink);
-}
-
-.avk-contact h2 {
-  max-width: 12ch;
-  margin: clamp(4rem, 8vw, 8rem) 0;
-  font-size: clamp(3.8rem, 8vw, 9rem);
-  font-weight: 430;
-  letter-spacing: -0.078em;
-  line-height: 0.88;
-  text-wrap: balance;
 }
 
 .avk-contact-bottom {
@@ -1276,46 +1281,6 @@
   animation-delay: 180ms;
 }
 
-@media (min-width: 761px) {
-  #catalog > .avk-section-heading:not(.avk-catalog-detail-heading) > #catalog-title {
-    font-size: clamp(2.5rem, 3.8vw, 5.5rem);
-  }
-
-  #services-title,
-  #process-title {
-    font-size: clamp(1.25rem, 2vw, 2.8rem);
-  }
-
-  #about-title {
-    max-width: none;
-    font-size: clamp(1.125rem, 2vw, 2.8rem);
-  }
-}
-
-@media (min-width: 761px) and (max-width: 1020px) {
-  .avk-catalog-index-section > .avk-section-heading > .avk-eyebrow {
-    grid-column: 1 / span 2;
-  }
-
-  .avk-catalog-index-section > .avk-section-heading > #catalog-title {
-    grid-column: 3 / span 8;
-  }
-}
-
-@media (min-width: 1021px) {
-  .avk-page-main #process > .avk-section-heading {
-    align-items: start;
-  }
-
-  .avk-page-main #process-title {
-    font-size: clamp(1.375rem, 2.2vw, 3rem);
-  }
-
-  .avk-page-main #process > .avk-section-heading > .avk-section-intro {
-    margin-top: clamp(0.4rem, 0.55vw, 0.7rem);
-  }
-}
-
 @media (max-width: 1020px) {
   .avk-section-heading h2 {
     grid-column: 4 / span 7;
@@ -1417,12 +1382,6 @@
     display: none;
   }
 
-  .avk-hero h1 {
-    max-width: 14ch;
-    font-size: clamp(3.25rem, 15.2vw, 5.7rem);
-    line-height: 0.91;
-  }
-
   .avk-hero-bottom {
     display: flex;
     flex-direction: column;
@@ -1456,12 +1415,12 @@
     margin-bottom: 3rem;
   }
 
-  .avk-section-heading h2 {
-    font-size: clamp(2.8rem, 13vw, 4.8rem);
+  .avk-page-heading > .avk-page-title {
+    margin-top: 0;
   }
 
-  .avk-catalog-index-section > .avk-section-heading > #catalog-title {
-    font-size: clamp(2.4rem, 13vw, 4.8rem);
+  .avk-site .avk-page-title {
+    font-size: clamp(2.25rem, 12vw, 3.25rem);
   }
 
   .avk-section-intro {
@@ -1530,14 +1489,6 @@
     flex-direction: column;
   }
 
-  .avk-about-copy .avk-eyebrow {
-    margin-bottom: 3rem;
-  }
-
-  .avk-about h2 {
-    font-size: clamp(2.9rem, 13vw, 5rem);
-  }
-
   .avk-about-paragraphs {
     grid-template-columns: 1fr;
     margin-top: 3.5rem;
@@ -1595,11 +1546,6 @@
     padding: 5rem 1.1rem 4rem;
   }
 
-  .avk-contact h2 {
-    margin-block: 3.8rem;
-    font-size: clamp(3.4rem, 15vw, 5.8rem);
-  }
-
   .avk-contact-bottom {
     display: flex;
     flex-direction: column;
@@ -1646,10 +1592,6 @@
 
   .avk-header-cta {
     padding: 0.24rem;
-  }
-
-  .avk-hero h1 {
-    font-size: 3rem;
   }
 
   .avk-project:nth-child(n) {
