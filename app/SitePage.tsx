@@ -328,9 +328,9 @@ export default function SitePage({
       </a>
 
       <header className="avk-header">
-        <Link className="avk-wordmark" href="/" aria-label={`${site.name} home`}>
+        <Link className="avk-wordmark" href="/" aria-label={`${site.name.toUpperCase()} home`}>
           <span className="avk-wordmark-seed" aria-hidden="true" />
-          {site.name}
+          {site.name.toUpperCase()}
         </Link>
 
         <nav className="avk-nav" aria-label="Primary navigation">
@@ -574,7 +574,7 @@ export default function SitePage({
         <div className="avk-footer-brand">
           <Link className="avk-wordmark avk-wordmark--footer" href="/">
             <span className="avk-wordmark-seed" aria-hidden="true" />
-            {site.name}
+            {site.name.toUpperCase()}
           </Link>
           <p>{footer.tagline || site.tagline}</p>
         </div>
