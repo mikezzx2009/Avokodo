@@ -120,7 +120,7 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
     eyebrow: "Industrial design · Engineering · Manufacturing",
     title: "DESIGN & MANUFACTURE SERVICE",
     description:
-      "Avokodo connects product and industrial design, 3D engineering, prototyping, tooling, and manufacturing through a studio in Guangdong and Hong Kong and a factory in Dongguan.",
+      "Avokodotech is a design‑and‑manufacturing company. We have in‑house design teams in Shenzhen and Xiamen, and our own manufacturing factory in Dongguan. We focus on product design and mold development, including injection molds, silicone molds and metal die‑casting. We deliver tailored services to meet clients’ every requirement.",
     primaryCta: { label: "Discuss a product", href: "/contact/" },
     secondaryCta: { label: "See selected work", href: "/work/" },
     image: {
