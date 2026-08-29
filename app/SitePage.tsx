@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ImageRef, LinkItem, ProjectItem, SiteContent } from "@/lib/content";
 import type { CatalogCategory } from "@/lib/catalog";
 import { CatalogCategoryView, CatalogIndex } from "./CatalogLibrary";
+import HeroSlideshow from "./HeroSlideshow";
 
 type SmartLinkProps = LinkItem & {
   className?: string;
@@ -249,7 +250,7 @@ export default function SitePage({
 
           <div className="avk-hero-bottom">
             <div className="avk-hero-visual">
-              <ImageOrArtwork image={hero.image} variant={0} eager />
+              <HeroSlideshow image={hero.image} />
             </div>
 
             <div className="avk-hero-copy">

@@ -120,13 +120,13 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
     eyebrow: "Industrial design · Engineering · Manufacturing",
     title: "DESIGN & MANUFACTURE SERVICE",
     description:
-      "Avokodotech is a design‑and‑manufacturing company. We have in‑house design teams in Shenzhen and Xiamen, and our own manufacturing factory in Dongguan. We focus on product design and mold development, including injection molds, silicone molds and metal die‑casting. We deliver tailored services to meet clients’ every requirement.",
+      "Avokodo connects product and industrial design, 3D engineering, prototyping, tooling, and manufacturing through a studio in Guangdong and Hong Kong and a factory in Dongguan.",
     primaryCta: { label: "Discuss a product", href: "/contact/" },
     secondaryCta: { label: "See selected work", href: "/work/" },
     image: {
-      id: "upwork-brand-film",
-      url: "/upwork-assets/brand-film.jpg",
-      alt: "Rendered rounded product forms in white, peach, and slate blue",
+      id: "hero-slide-teapot",
+      url: "/upwork-assets/hero-slide-01-teapot.jpg",
+      alt: "Floral porcelain teapot pouring into a cup",
     },
   },
   about: {
@@ -304,6 +304,10 @@ const BUNDLED_IMAGE_IDS = new Map<string, string>([
   ["/upwork-assets/wearable-product.jpg", "upwork-wearable-product"],
   ["/upwork-assets/phone-case-leather.jpg", "upwork-phone-case-leather"],
   ["/upwork-assets/brand-film.jpg", "upwork-brand-film"],
+  ["/upwork-assets/hero-slide-01-teapot.jpg", "hero-slide-teapot"],
+  ["/upwork-assets/hero-slide-02-camera.jpg", "hero-slide-camera"],
+  ["/upwork-assets/hero-slide-03-character.jpg", "hero-slide-character"],
+  ["/upwork-assets/hero-slide-04-workshop.png", "hero-slide-workshop"],
   ["/upwork-assets/broky-profile.webp", "upwork-broky-profile"],
 ]);
 
