@@ -68,6 +68,11 @@ test("locks the complete published Avokodo presentation to repository assets", a
     { label: "Contact", href: "/contact/" },
   ]);
   assert.equal(PUBLISHED_SITE_CONTENT.hero.title, "DESIGN & MANUFACTURE SERVICE");
+  assert.deepEqual(PUBLISHED_SITE_CONTENT.hero.image, {
+    id: "hero-slide-teapot",
+    url: "/upwork-assets/hero-slide-01-teapot.jpg",
+    alt: "Floral porcelain teapot pouring into a cup",
+  });
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.about.facts.map(({ value, label }) => [value, label]),
     [
@@ -218,6 +223,47 @@ test("keeps the homepage focused while section pages retain their content", asyn
     assert.match(pageHtml, new RegExp(image.url.replaceAll("/", "\\/")));
     await access(new URL(`out${image.url}`, root));
   }
+});
+
+test("renders the ordered homepage slideshow with motion safeguards", async () => {
+  const [homeHtml, slideshow, siteCss] = await Promise.all([
+    source("out/index.html"),
+    source("app/HeroSlideshow.tsx"),
+    source("app/site.css"),
+  ]);
+  const slidePaths = [
+    "/upwork-assets/hero-slide-01-teapot.jpg",
+    "/upwork-assets/hero-slide-02-camera.jpg",
+    "/upwork-assets/hero-slide-03-character.jpg",
+    "/upwork-assets/hero-slide-04-workshop.png",
+  ];
+  let previousIndex = -1;
+
+  for (const slidePath of slidePaths) {
+    const slideIndex = homeHtml.indexOf(slidePath);
+    assert.ok(slideIndex > previousIndex, `${slidePath} should follow the requested order`);
+    previousIndex = slideIndex;
+    await access(new URL(`public${slidePath}`, root));
+    await access(new URL(`out${slidePath}`, root));
+  }
+
+  assert.match(homeHtml, /aria-roledescription="carousel"/);
+  assert.match(homeHtml, /Avokodo 3D renderings/);
+  assert.match(homeHtml, /aria-label="Stop slide rotation"/);
+  assert.match(slideshow, /Start slide rotation/);
+  assert.doesNotMatch(slideshow, /aria-pressed/);
+  assert.match(homeHtml, /aria-label="Previous slide"/);
+  assert.match(homeHtml, /aria-label="Next slide"/);
+  assert.equal((homeHtml.match(/aria-roledescription="slide"/g) ?? []).length, 4);
+  assert.match(slideshow, /SLIDE_INTERVAL_MS = 4_000/);
+  assert.match(slideshow, /prefers-reduced-motion: reduce/);
+  assert.match(slideshow, /reducedMotion\.matches/);
+  assert.match(slideshow, /clearInterval/);
+  assert.match(slideshow, /visibilitychange/);
+  assert.match(slideshow, /onFocusCapture/);
+  assert.match(slideshow, /onMouseEnter/);
+  assert.match(siteCss, /transition:\s*opacity 800ms ease/);
+  assert.match(siteCss, /object-fit:\s*contain/);
 });
 
 test("exports every primary navigation item as its own content page", async () => {
