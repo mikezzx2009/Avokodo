@@ -44,6 +44,13 @@ export type LocationItem = {
   title: string;
   location: string;
   description: string;
+  mapHref: string;
+};
+
+export type GalleryItem = {
+  id: string;
+  image: ImageRef;
+  caption: string;
 };
 
 export type SiteContent = {
@@ -66,6 +73,7 @@ export type SiteContent = {
     title: string;
     paragraphs: string[];
     image: ImageRef | null;
+    gallery: GalleryItem[];
     facts: FactItem[];
     capabilities: ServiceItem[];
     materials: string[];
@@ -152,7 +160,94 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
       "We connect concept development, industrial design, engineering, prototyping, material selection, tooling, manufacturing, assembly, and production coordination in one practical workflow.",
       "Our teams support OEM, ODM, and custom programs across plastic, silicone, metal hardware, and consumer electronics, with manufacturability, quality, target cost, and scalable production considered from the start.",
     ],
-    image: null,
+    image: {
+      id: "about-studio-entrance",
+      url: "/about-assets/studio-entrance.jpg",
+      alt: "Entrance to Avokodo's connected design and manufacturing operation",
+    },
+    gallery: [
+      {
+        id: "design-office-01",
+        image: {
+          id: "about-design-office-01",
+          url: "/about-assets/design-office-01.jpg",
+          alt: "Avokodo design and engineering team working in the studio",
+        },
+        caption: "Design & engineering · Team workspace",
+      },
+      {
+        id: "factory-floor-01",
+        image: {
+          id: "about-factory-floor-01",
+          url: "/about-assets/factory-floor-01.jpg",
+          alt: "Factory assembly floor with organized production workstations",
+        },
+        caption: "Manufacturing · Assembly floor",
+      },
+      {
+        id: "assembly-line-products",
+        image: {
+          id: "about-assembly-line-products",
+          url: "/about-assets/assembly-line-products.jpg",
+          alt: "Finished electronic products moving through assembly",
+        },
+        caption: "Assembly · Production run",
+      },
+      {
+        id: "factory-floor-02",
+        image: {
+          id: "about-factory-floor-02",
+          url: "/about-assets/factory-floor-02.jpg",
+          alt: "Factory production and storage area",
+        },
+        caption: "Factory · Production planning",
+      },
+      {
+        id: "assembly-workstation",
+        image: {
+          id: "about-assembly-workstation",
+          url: "/about-assets/assembly-workstation.jpg",
+          alt: "Operator working at an Avokodo production line",
+        },
+        caption: "Manufacturing · In-process assembly",
+      },
+      {
+        id: "product-inspection",
+        image: {
+          id: "about-product-inspection",
+          url: "/about-assets/product-inspection.jpg",
+          alt: "Manufactured products arranged for inspection and packing",
+        },
+        caption: "Quality control · Final inspection",
+      },
+      {
+        id: "factory-floor-03",
+        image: {
+          id: "about-factory-floor-03",
+          url: "/about-assets/factory-floor-03.jpg",
+          alt: "Wide view of Avokodo's organized manufacturing floor",
+        },
+        caption: "Factory · Scalable production",
+      },
+      {
+        id: "finished-components",
+        image: {
+          id: "about-finished-components",
+          url: "/about-assets/finished-components.jpg",
+          alt: "Finished metal components organized in production bins",
+        },
+        caption: "Components · Finishing & handling",
+      },
+      {
+        id: "design-office-02",
+        image: {
+          id: "about-design-office-02",
+          url: "/about-assets/design-office-02.jpg",
+          alt: "Avokodo design and engineering team in the Xiamen and Shenzhen studio network",
+        },
+        caption: "Design & engineering · Connected teams",
+      },
+    ],
     facts: [
       {
         id: "design-teams",
@@ -253,6 +348,8 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
         location: "Xiamen · Fujian · China",
         description:
           "Product design, engineering, development, and manufacturing coordination.",
+        mapHref:
+          "https://www.google.com/maps/search/?api=1&query=Xiamen%2C%20Fujian%2C%20China",
       },
       {
         id: "shenzhen",
@@ -260,6 +357,8 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
         location: "Shenzhen · Guangdong · China",
         description:
           "Product development, supply-chain coordination, engineering, and manufacturing support.",
+        mapHref:
+          "https://www.google.com/maps/search/?api=1&query=Shenzhen%2C%20Guangdong%2C%20China",
       },
     ],
     closing: {
@@ -433,6 +532,16 @@ const BUNDLED_IMAGE_IDS = new Map<string, string>([
   ["/upwork-assets/hero-slide-03-character.jpg", "hero-slide-character"],
   ["/upwork-assets/hero-slide-04-workshop.png", "hero-slide-workshop"],
   ["/upwork-assets/broky-profile.webp", "upwork-broky-profile"],
+  ["/about-assets/studio-entrance.jpg", "about-studio-entrance"],
+  ["/about-assets/design-office-01.jpg", "about-design-office-01"],
+  ["/about-assets/factory-floor-01.jpg", "about-factory-floor-01"],
+  ["/about-assets/assembly-line-products.jpg", "about-assembly-line-products"],
+  ["/about-assets/factory-floor-02.jpg", "about-factory-floor-02"],
+  ["/about-assets/assembly-workstation.jpg", "about-assembly-workstation"],
+  ["/about-assets/product-inspection.jpg", "about-product-inspection"],
+  ["/about-assets/factory-floor-03.jpg", "about-factory-floor-03"],
+  ["/about-assets/finished-components.jpg", "about-finished-components"],
+  ["/about-assets/design-office-02.jpg", "about-design-office-02"],
 ]);
 
 export class SiteContentValidationError extends Error {
@@ -528,6 +637,7 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
       "title",
       "paragraphs",
       "image",
+      "gallery",
       "facts",
       "capabilities",
       "materials",
@@ -545,6 +655,9 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
     title: textValue(value.title, "about.title", 1, 240, issues),
     paragraphs: stringArray(value.paragraphs, "about.paragraphs", 1, 8, 1, 1_500, issues),
     image: parseNullableImage(value.image, "about.image", issues),
+    gallery: arrayValue(value.gallery, "about.gallery", 1, 12, issues).map((item, index) =>
+      parseGalleryItem(item, `about.gallery[${index}]`, issues),
+    ),
     facts: arrayValue(value.facts, "about.facts", 1, 6, issues).map((item, index) =>
       parseFact(item, `about.facts[${index}]`, issues),
     ),
@@ -583,12 +696,28 @@ function parseFact(input: unknown, path: string, issues: string[]): FactItem {
 
 function parseLocation(input: unknown, path: string, issues: string[]): LocationItem {
   const value = objectValue(input, path, issues);
-  exactKeys(value, ["id", "title", "location", "description"], path, issues);
+  exactKeys(value, ["id", "title", "location", "description", "mapHref"], path, issues);
   return {
     id: idValue(value.id, `${path}.id`, issues),
     title: textValue(value.title, `${path}.title`, 1, 140, issues),
     location: textValue(value.location, `${path}.location`, 1, 140, issues),
     description: textValue(value.description, `${path}.description`, 1, 1_000, issues),
+    mapHref: hrefValue(value.mapHref, `${path}.mapHref`, issues),
+  };
+}
+
+function parseGalleryItem(input: unknown, path: string, issues: string[]): GalleryItem {
+  const value = objectValue(input, path, issues);
+  exactKeys(value, ["id", "image", "caption"], path, issues);
+  return {
+    id: idValue(value.id, `${path}.id`, issues),
+    image:
+      parseNullableImage(value.image, `${path}.image`, issues) ?? {
+        id: "invalid-gallery-image",
+        url: "",
+        alt: "Invalid gallery image",
+      },
+    caption: textValue(value.caption, `${path}.caption`, 1, 140, issues),
   };
 }
 

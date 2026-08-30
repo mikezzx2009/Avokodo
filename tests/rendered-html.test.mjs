@@ -20,6 +20,7 @@ function contentImages(content) {
   return [
     content.hero.image,
     content.about.image,
+    ...content.about.gallery.map((item) => item.image),
     ...content.work.items.map((item) => item.image),
   ].filter(Boolean);
 }
@@ -86,6 +87,11 @@ test("locks the complete published Avokodo presentation to repository assets", a
     PUBLISHED_SITE_CONTENT.about.paragraphs.join(" "),
     /plastic, silicone, metal hardware, and consumer electronics/,
   );
+  assert.equal(PUBLISHED_SITE_CONTENT.about.gallery.length, 9);
+  assert.equal(
+    PUBLISHED_SITE_CONTENT.about.image.url,
+    "/about-assets/studio-entrance.jpg",
+  );
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.about.capabilities.map(({ title }) => title),
     [
@@ -114,6 +120,13 @@ test("locks the complete published Avokodo presentation to repository assets", a
     ],
   );
   assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.locations.map(({ mapHref }) => mapHref),
+    [
+      "https://www.google.com/maps/search/?api=1&query=Xiamen%2C%20Fujian%2C%20China",
+      "https://www.google.com/maps/search/?api=1&query=Shenzhen%2C%20Guangdong%2C%20China",
+    ],
+  );
+  assert.deepEqual(
     PUBLISHED_SITE_CONTENT.work.items.map(({ title, image }) => [title, image?.url]),
     [
       ["High-end personal accessories", "/upwork-assets/high-end-accessories.jpg"],
@@ -130,9 +143,9 @@ test("locks the complete published Avokodo presentation to repository assets", a
   );
 
   const images = contentImages(PUBLISHED_SITE_CONTENT);
-  assert.equal(images.length, 4);
+  assert.equal(images.length, 14);
   for (const image of images) {
-    assert.match(image.url, /^\/upwork-assets\/[a-z0-9-]+\.(?:jpg|webp)$/);
+    assert.match(image.url, /^\/(?:upwork-assets|about-assets)\/[a-z0-9-]+\.(?:jpg|webp)$/);
     await access(new URL(`public${image.url}`, root));
   }
 });
@@ -245,12 +258,26 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(aboutHtml, /Materials &amp; program types/);
   assert.match(aboutHtml, /Two teams, one connected operation/);
   assert.match(aboutHtml, /Designed for better products and better production/);
+  assert.match(aboutHtml, /Inside Avokodo/);
+  assert.match(aboutHtml, /Open in Google Maps/);
+  assert.match(
+    aboutHtml,
+    /https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=Xiamen%2C%20Fujian%2C%20China/,
+  );
+  assert.match(
+    aboutHtml,
+    /https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=Shenzhen%2C%20Guangdong%2C%20China/,
+  );
 
   for (const image of contentImages(PUBLISHED_SITE_CONTENT)) {
+    const aboutImages = new Set([
+      PUBLISHED_SITE_CONTENT.about.image,
+      ...PUBLISHED_SITE_CONTENT.about.gallery.map((item) => item.image),
+    ]);
     const pageHtml =
       image === PUBLISHED_SITE_CONTENT.hero.image
         ? homeHtml
-        : image === PUBLISHED_SITE_CONTENT.about.image
+        : aboutImages.has(image)
           ? aboutHtml
           : workHtml;
     assert.match(pageHtml, new RegExp(image.url.replaceAll("/", "\\/")));
