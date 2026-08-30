@@ -390,6 +390,23 @@ export default function SitePage({
             </dl>
           ) : null}
 
+          <div className="avk-about-subsection" aria-labelledby="about-gallery-title">
+            <div className="avk-about-subheading">
+              <p className="avk-eyebrow">Inside Avokodo</p>
+              <h3 id="about-gallery-title">Design thinking, made physical.</h3>
+            </div>
+            <div className="avk-about-gallery">
+              {about.gallery.map((item) => (
+                <figure className="avk-about-gallery-item" key={item.id}>
+                  <div className="avk-about-gallery-media">
+                    <ImageOrArtwork image={item.image} variant={5} />
+                  </div>
+                  <figcaption>{item.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
           <div className="avk-about-subsection" aria-labelledby="about-capabilities-title">
             <div className="avk-about-subheading">
               <p className="avk-eyebrow">Integrated capabilities</p>
@@ -443,6 +460,16 @@ export default function SitePage({
                   <p>{location.location}</p>
                   <h4>{location.title}</h4>
                   <p>{location.description}</p>
+                  <a
+                    className="avk-about-map-link"
+                    href={location.mapHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${location.title} location in Google Maps`}
+                  >
+                    <span>Open in Google Maps</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </article>
               ))}
             </div>
