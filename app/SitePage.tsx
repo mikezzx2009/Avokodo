@@ -434,9 +434,9 @@ export default function SitePage({
           </div>
 
           <div className="avk-about-subsection" aria-labelledby="about-process-title">
-            <div className="avk-about-subheading">
+            <div className="avk-about-subheading avk-about-subheading--single-line">
               <p className="avk-eyebrow">From brief to production</p>
-              <h3 id="about-process-title">One integrated path.</h3>
+              <h3 id="about-process-title">ONE STOP SERIVCE</h3>
             </div>
             <ol className="avk-about-process">
               {about.process.map((step) => (
@@ -452,7 +452,7 @@ export default function SitePage({
           <div className="avk-about-subsection" aria-labelledby="about-locations-title">
             <div className="avk-about-subheading avk-about-subheading--single-line">
               <p className="avk-eyebrow">Our locations</p>
-              <h3 id="about-locations-title">Two teams &amp; one connected operation</h3>
+              <h3 id="about-locations-title">TWO TEAMS &amp; ONE CONNECTED OPERATION</h3>
             </div>
             <div className="avk-about-location-grid">
               {about.locations.map((location) => (
@@ -460,6 +460,9 @@ export default function SitePage({
                   <p>{location.location}</p>
                   <h4>{location.title}</h4>
                   <p>{location.description}</p>
+                  <div className="avk-about-location-map">
+                    <ImageOrArtwork image={location.mapImage} variant={5} />
+                  </div>
                   <a
                     className="avk-about-map-link"
                     href={location.mapHref}

@@ -44,6 +44,7 @@ export type LocationItem = {
   title: string;
   location: string;
   description: string;
+  mapImage: ImageRef;
   mapHref: string;
 };
 
@@ -348,6 +349,11 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
         location: "Xiamen · Fujian · China",
         description:
           "Product design, engineering, development, and manufacturing coordination.",
+        mapImage: {
+          id: "about-xiamen-location-map",
+          url: "/about-assets/xiamen-location-map.png",
+          alt: "Map showing the Xiamen team location",
+        },
         mapHref:
           "https://www.google.com/maps/search/?api=1&query=Xiamen%2C%20Fujian%2C%20China",
       },
@@ -357,6 +363,11 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
         location: "Shenzhen · Guangdong · China",
         description:
           "Product development, supply-chain coordination, engineering, and manufacturing support.",
+        mapImage: {
+          id: "about-shenzhen-location-map",
+          url: "/about-assets/shenzhen-location-map.png",
+          alt: "Map showing the Shenzhen team location",
+        },
         mapHref:
           "https://www.google.com/maps/search/?api=1&query=Shenzhen%2C%20Guangdong%2C%20China",
       },
@@ -542,6 +553,8 @@ const BUNDLED_IMAGE_IDS = new Map<string, string>([
   ["/about-assets/factory-floor-03.jpg", "about-factory-floor-03"],
   ["/about-assets/finished-components.jpg", "about-finished-components"],
   ["/about-assets/design-office-02.jpg", "about-design-office-02"],
+  ["/about-assets/xiamen-location-map.png", "about-xiamen-location-map"],
+  ["/about-assets/shenzhen-location-map.png", "about-shenzhen-location-map"],
 ]);
 
 export class SiteContentValidationError extends Error {
@@ -696,12 +709,23 @@ function parseFact(input: unknown, path: string, issues: string[]): FactItem {
 
 function parseLocation(input: unknown, path: string, issues: string[]): LocationItem {
   const value = objectValue(input, path, issues);
-  exactKeys(value, ["id", "title", "location", "description", "mapHref"], path, issues);
+  exactKeys(
+    value,
+    ["id", "title", "location", "description", "mapImage", "mapHref"],
+    path,
+    issues,
+  );
   return {
     id: idValue(value.id, `${path}.id`, issues),
     title: textValue(value.title, `${path}.title`, 1, 140, issues),
     location: textValue(value.location, `${path}.location`, 1, 140, issues),
     description: textValue(value.description, `${path}.description`, 1, 1_000, issues),
+    mapImage:
+      parseNullableImage(value.mapImage, `${path}.mapImage`, issues) ?? {
+        id: "invalid-location-map",
+        url: "",
+        alt: "Invalid location map",
+      },
     mapHref: hrefValue(value.mapHref, `${path}.mapHref`, issues),
   };
 }

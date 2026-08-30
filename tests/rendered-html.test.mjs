@@ -21,6 +21,7 @@ function contentImages(content) {
     content.hero.image,
     content.about.image,
     ...content.about.gallery.map((item) => item.image),
+    ...content.about.locations.map((item) => item.mapImage),
     ...content.work.items.map((item) => item.image),
   ].filter(Boolean);
 }
@@ -127,6 +128,13 @@ test("locks the complete published Avokodo presentation to repository assets", a
     ],
   );
   assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.locations.map(({ mapImage }) => mapImage.url),
+    [
+      "/about-assets/xiamen-location-map.png",
+      "/about-assets/shenzhen-location-map.png",
+    ],
+  );
+  assert.deepEqual(
     PUBLISHED_SITE_CONTENT.work.items.map(({ title, image }) => [title, image?.url]),
     [
       ["High-end personal accessories", "/upwork-assets/high-end-accessories.jpg"],
@@ -143,9 +151,9 @@ test("locks the complete published Avokodo presentation to repository assets", a
   );
 
   const images = contentImages(PUBLISHED_SITE_CONTENT);
-  assert.equal(images.length, 14);
+  assert.equal(images.length, 16);
   for (const image of images) {
-    assert.match(image.url, /^\/(?:upwork-assets|about-assets)\/[a-z0-9-]+\.(?:jpg|webp)$/);
+    assert.match(image.url, /^\/(?:upwork-assets|about-assets)\/[a-z0-9-]+\.(?:jpg|png|webp)$/);
     await access(new URL(`public${image.url}`, root));
   }
 });
@@ -256,8 +264,9 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(aboutHtml, /AVOKODO&amp;SMLP/);
   assert.match(aboutHtml, /DEVELOPMENT FOR MANUFACTURING/);
   assert.match(aboutHtml, /Materials &amp; program types/);
-  assert.match(aboutHtml, /Two teams &amp; one connected operation/);
+  assert.match(aboutHtml, /TWO TEAMS &amp; ONE CONNECTED OPERATION/);
   assert.match(aboutHtml, /PROTOTYPE&amp;MASS PRODUCTION/);
+  assert.match(aboutHtml, /ONE STOP SERIVCE/);
   assert.match(aboutHtml, /Designed for better products and better production/);
   assert.match(aboutHtml, /Inside Avokodo/);
   assert.match(aboutHtml, /Open in Google Maps/);
@@ -274,6 +283,7 @@ test("keeps the homepage focused while section pages retain their content", asyn
     const aboutImages = new Set([
       PUBLISHED_SITE_CONTENT.about.image,
       ...PUBLISHED_SITE_CONTENT.about.gallery.map((item) => item.image),
+      ...PUBLISHED_SITE_CONTENT.about.locations.map((item) => item.mapImage),
     ]);
     const pageHtml =
       image === PUBLISHED_SITE_CONTENT.hero.image

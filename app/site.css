@@ -1478,6 +1478,14 @@
   line-height: 1.55;
 }
 
+.avk-about-location-map {
+  width: 100%;
+  aspect-ratio: 1548 / 1095;
+  margin-top: 2rem;
+  overflow: hidden;
+  background: rgba(23, 24, 20, 0.05);
+}
+
 .avk-about-map-link {
   display: flex;
   width: 100%;
@@ -2103,6 +2111,10 @@
 
   .avk-about-location h4 {
     margin-top: 4rem;
+  }
+
+  .avk-about-location-map {
+    margin-top: 1.5rem;
   }
 
   .avk-about-map-link {
