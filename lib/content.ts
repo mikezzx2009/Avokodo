@@ -154,7 +154,7 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
   },
   about: {
     eyebrow: "About Avokodo",
-    title: "Turning product ideas into production-ready solutions.",
+    title: "AVOKODO&SMLP",
     paragraphs: [
       "Avokodo is an integrated product design, development, and manufacturing company. Our in-house design and engineering teams operate in Xiamen and Shenzhen, supported by our own manufacturing factory in Dongguan.",
       "We connect concept development, industrial design, engineering, prototyping, material selection, tooling, manufacturing, assembly, and production coordination in one practical workflow.",
