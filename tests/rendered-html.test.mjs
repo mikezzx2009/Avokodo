@@ -85,8 +85,23 @@ test("locks the complete published Avokodo presentation to repository assets", a
     ],
   );
   assert.match(
-    PUBLISHED_SITE_CONTENT.about.paragraphs.join(" "),
+    PUBLISHED_SITE_CONTENT.about.storySections
+      .flatMap(({ paragraphs }) => paragraphs)
+      .join(" "),
     /plastic, silicone, metal hardware, and consumer electronics/,
+  );
+  assert.equal(PUBLISHED_SITE_CONTENT.about.introTitle, "From Concept to Production");
+  assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.storySections.map(({ title }) => title),
+    [
+      "Integrated Product Design & Development",
+      "Materials & Manufacturing Capabilities",
+      "OEM, ODM & Custom Product Programs",
+      "Design for Manufacturing",
+      "From Prototype to Mass Production",
+      "Xiamen · Shenzhen · Dongguan",
+      "Building Products That Can Be Made",
+    ],
   );
   assert.equal(PUBLISHED_SITE_CONTENT.about.gallery.length, 9);
   assert.equal(
@@ -262,6 +277,10 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(workHtml, /Phone case \+ leather/);
 
   assert.match(aboutHtml, /AVOKODO&amp;SMLP/);
+  assert.match(aboutHtml, /From Concept to Production/);
+  assert.match(aboutHtml, /Integrated Product Design &amp; Development/);
+  assert.match(aboutHtml, /Building Products That Can Be Made/);
+  assert.match(aboutHtml, /Avokodo — turning ideas into products built for real-world production/);
   assert.match(aboutHtml, /DEVELOPMENT FOR MANUFACTURING/);
   assert.match(aboutHtml, /Materials &amp; program types/);
   assert.match(aboutHtml, /TWO TEAMS &amp; ONE CONNECTED OPERATION/);
