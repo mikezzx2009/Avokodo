@@ -373,7 +373,7 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
       },
     ],
     closing: {
-      title: "Designed for better products and better production.",
+      title: "DESIGNED FOR BETTER PRODUCTS AND BETTER PRODUCTION",
       description:
         "By connecting design decisions with real manufacturing requirements, we help reduce development risk, improve communication, control cost, and move products from prototype to reliable mass production.",
     },

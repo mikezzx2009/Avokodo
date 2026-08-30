@@ -267,7 +267,7 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(aboutHtml, /TWO TEAMS &amp; ONE CONNECTED OPERATION/);
   assert.match(aboutHtml, /PROTOTYPE&amp;MASS PRODUCTION/);
   assert.match(aboutHtml, /ONE STOP SERIVCE/);
-  assert.match(aboutHtml, /Designed for better products and better production/);
+  assert.match(aboutHtml, /DESIGNED FOR BETTER PRODUCTS AND BETTER PRODUCTION/);
   assert.match(aboutHtml, /Inside Avokodo/);
   assert.match(aboutHtml, /Open in Google Maps/);
   assert.match(
