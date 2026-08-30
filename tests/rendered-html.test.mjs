@@ -253,10 +253,11 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(workHtml, /Wearable product from design to manufacture/);
   assert.match(workHtml, /Phone case \+ leather/);
 
-  assert.match(aboutHtml, /Turning product ideas into production-ready solutions/);
-  assert.match(aboutHtml, /Product development and manufacturing, connected/);
+  assert.match(aboutHtml, /AVOKODO&amp;SMLP/);
+  assert.match(aboutHtml, /DEVELOPMENT FOR MANUFACTURING/);
   assert.match(aboutHtml, /Materials &amp; program types/);
-  assert.match(aboutHtml, /Two teams, one connected operation/);
+  assert.match(aboutHtml, /Two teams &amp; one connected operation/);
+  assert.match(aboutHtml, /PROTOTYPE&amp;MASS PRODUCTION/);
   assert.match(aboutHtml, /Designed for better products and better production/);
   assert.match(aboutHtml, /Inside Avokodo/);
   assert.match(aboutHtml, /Open in Google Maps/);
@@ -329,7 +330,7 @@ test("renders the ordered homepage slideshow with motion safeguards", async () =
 test("exports every primary navigation item as its own content page", async () => {
   const routes = {
     catalog: "Browse the material library by folder.",
-    about: "Turning product ideas into production-ready solutions.",
+    about: "AVOKODO&amp;SMLP",
     services: "From the first line on paper to production on the floor.",
     work: "Selected products, from concept to manufacture.",
     process: "A practical route from brief to production.",

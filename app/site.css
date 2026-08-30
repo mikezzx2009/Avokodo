@@ -1117,6 +1117,12 @@
   grid-column: 1 / -1;
 }
 
+.avk-site .avk-about-title--single-line {
+  max-width: none;
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
 .avk-about-copy > .avk-about-paragraphs {
   margin-top: 0;
 }
@@ -1214,6 +1220,13 @@
   line-height: 0.98;
   text-align: center;
   text-wrap: balance;
+}
+
+.avk-about-subheading--single-line h3 {
+  grid-column: 3 / span 8;
+  font-size: clamp(2rem, 3.4vw, 4.1rem);
+  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 .avk-about-gallery {
@@ -2019,6 +2032,12 @@
 
   .avk-about-subheading h3 {
     font-size: clamp(2.1rem, 10vw, 3.25rem);
+  }
+
+  .avk-about-subheading--single-line h3 {
+    font-size: clamp(1rem, 4.9vw, 1.85rem);
+    letter-spacing: -0.055em;
+    white-space: nowrap;
   }
 
   .avk-about-gallery {

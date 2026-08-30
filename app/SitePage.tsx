@@ -362,7 +362,7 @@ export default function SitePage({
         >
           <div className="avk-section-heading avk-page-heading avk-page-heading--plain avk-about-heading">
             <p className="avk-eyebrow">{about.eyebrow}</p>
-            <h2 className="avk-page-title" id="about-title">
+            <h2 className="avk-page-title avk-about-title--single-line" id="about-title">
               {about.title}
             </h2>
           </div>
@@ -391,9 +391,9 @@ export default function SitePage({
           ) : null}
 
           <div className="avk-about-subsection" aria-labelledby="about-gallery-title">
-            <div className="avk-about-subheading">
+            <div className="avk-about-subheading avk-about-subheading--single-line">
               <p className="avk-eyebrow">Inside Avokodo</p>
-              <h3 id="about-gallery-title">Design thinking, made physical.</h3>
+              <h3 id="about-gallery-title">PROTOTYPE&amp;MASS PRODUCTION</h3>
             </div>
             <div className="avk-about-gallery">
               {about.gallery.map((item) => (
@@ -408,10 +408,10 @@ export default function SitePage({
           </div>
 
           <div className="avk-about-subsection" aria-labelledby="about-capabilities-title">
-            <div className="avk-about-subheading">
+            <div className="avk-about-subheading avk-about-subheading--single-line">
               <p className="avk-eyebrow">Integrated capabilities</p>
               <h3 id="about-capabilities-title">
-                Product development and manufacturing, connected.
+                DEVELOPMENT FOR MANUFACTURING
               </h3>
             </div>
             <div className="avk-about-capability-grid">
@@ -450,9 +450,9 @@ export default function SitePage({
           </div>
 
           <div className="avk-about-subsection" aria-labelledby="about-locations-title">
-            <div className="avk-about-subheading">
+            <div className="avk-about-subheading avk-about-subheading--single-line">
               <p className="avk-eyebrow">Our locations</p>
-              <h3 id="about-locations-title">Two teams, one connected operation.</h3>
+              <h3 id="about-locations-title">Two teams &amp; one connected operation</h3>
             </div>
             <div className="avk-about-location-grid">
               {about.locations.map((location) => (
