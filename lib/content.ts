@@ -39,6 +39,13 @@ export type ProcessStep = {
   description: string;
 };
 
+export type LocationItem = {
+  id: string;
+  title: string;
+  location: string;
+  description: string;
+};
+
 export type SiteContent = {
   site: {
     name: string;
@@ -60,6 +67,14 @@ export type SiteContent = {
     paragraphs: string[];
     image: ImageRef | null;
     facts: FactItem[];
+    capabilities: ServiceItem[];
+    materials: string[];
+    process: ProcessStep[];
+    locations: LocationItem[];
+    closing: {
+      title: string;
+      description: string;
+    };
   };
   services: {
     eyebrow: string;
@@ -130,19 +145,128 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
     },
   },
   about: {
-    eyebrow: "Studio and factory",
-    title: "One connected path from design intent to manufactured detail.",
+    eyebrow: "About Avokodo",
+    title: "Turning product ideas into production-ready solutions.",
     paragraphs: [
-      "Avokodo is a design studio in Guangdong and Hong Kong with a factory in Dongguan, bringing product design and manufacturing into one practical workflow.",
-      "The authorized Upwork profile records 10+ years of experience, Top Rated status, 100% Job Success, a 5.0 rating across 22 reviews, and 28 total jobs.",
+      "Avokodo is an integrated product design, development, and manufacturing company. Our in-house design and engineering teams operate in Xiamen and Shenzhen, supported by our own manufacturing factory in Dongguan.",
+      "We connect concept development, industrial design, engineering, prototyping, material selection, tooling, manufacturing, assembly, and production coordination in one practical workflow.",
+      "Our teams support OEM, ODM, and custom programs across plastic, silicone, metal hardware, and consumer electronics, with manufacturability, quality, target cost, and scalable production considered from the start.",
     ],
     image: null,
     facts: [
-      { id: "job-success", value: "100%", label: "Upwork Job Success" },
-      { id: "upwork-status", value: "Top Rated", label: "Upwork status" },
-      { id: "total-jobs", value: "28", label: "Total jobs" },
-      { id: "experience", value: "10+", label: "Years of experience" },
+      {
+        id: "design-teams",
+        value: "Xiamen + Shenzhen",
+        label: "Design and engineering teams",
+      },
+      { id: "factory", value: "Dongguan", label: "Manufacturing factory" },
+      { id: "program-models", value: "OEM / ODM", label: "Flexible program models" },
+      {
+        id: "integrated-delivery",
+        value: "Concept → Production",
+        label: "Connected product delivery",
+      },
     ],
+    capabilities: [
+      {
+        id: "about-product-design",
+        number: "01",
+        title: "Product Design",
+        description:
+          "Industrial design, appearance development, structure planning, and design-for-manufacturing support.",
+        capabilities: [],
+      },
+      {
+        id: "about-engineering",
+        number: "02",
+        title: "Engineering & Development",
+        description:
+          "Mechanical engineering, prototype validation, materials, tolerances, assembly, and production engineering.",
+        capabilities: [],
+      },
+      {
+        id: "about-manufacturing",
+        number: "03",
+        title: "Tooling & Manufacturing",
+        description:
+          "Tooling development, process coordination, quality control, assembly, and scalable mass-production support.",
+        capabilities: [],
+      },
+      {
+        id: "about-supply-chain",
+        number: "04",
+        title: "Supply-Chain Integration",
+        description:
+          "Supplier coordination across plastic, silicone, metal hardware, electronics, and finished-product assembly.",
+        capabilities: [],
+      },
+    ],
+    materials: [
+      "Plastic",
+      "Silicone",
+      "Metal hardware",
+      "Consumer electronics",
+      "OEM / ODM",
+    ],
+    process: [
+      {
+        id: "about-concept",
+        number: "01",
+        title: "Concept & Brief",
+        description: "Align the opportunity, user needs, target cost, and production goals.",
+      },
+      {
+        id: "about-industrial-design",
+        number: "02",
+        title: "Industrial Design",
+        description: "Shape the product experience, appearance, ergonomics, and intent.",
+      },
+      {
+        id: "about-engineering-step",
+        number: "03",
+        title: "Engineering",
+        description: "Resolve structure, materials, tolerances, assembly, and manufacturability.",
+      },
+      {
+        id: "about-prototype",
+        number: "04",
+        title: "Prototype",
+        description: "Build and validate physical proofs before committing to tooling.",
+      },
+      {
+        id: "about-tooling",
+        number: "05",
+        title: "Tooling",
+        description: "Develop the molds, fixtures, and process controls required for production.",
+      },
+      {
+        id: "about-mass-production",
+        number: "06",
+        title: "Mass Production",
+        description: "Coordinate manufacturing, quality, assembly, and scalable delivery.",
+      },
+    ],
+    locations: [
+      {
+        id: "xiamen",
+        title: "Xiamen Team",
+        location: "Xiamen · Fujian · China",
+        description:
+          "Product design, engineering, development, and manufacturing coordination.",
+      },
+      {
+        id: "shenzhen",
+        title: "Shenzhen Team",
+        location: "Shenzhen · Guangdong · China",
+        description:
+          "Product development, supply-chain coordination, engineering, and manufacturing support.",
+      },
+    ],
+    closing: {
+      title: "Designed for better products and better production.",
+      description:
+        "By connecting design decisions with real manufacturing requirements, we help reduce development risk, improve communication, control cost, and move products from prototype to reliable mass production.",
+    },
   },
   services: {
     eyebrow: "Capabilities",
@@ -397,7 +521,25 @@ function parseHero(input: unknown, issues: string[]): SiteContent["hero"] {
 
 function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
   const value = objectValue(input, "about", issues);
-  exactKeys(value, ["eyebrow", "title", "paragraphs", "image", "facts"], "about", issues);
+  exactKeys(
+    value,
+    [
+      "eyebrow",
+      "title",
+      "paragraphs",
+      "image",
+      "facts",
+      "capabilities",
+      "materials",
+      "process",
+      "locations",
+      "closing",
+    ],
+    "about",
+    issues,
+  );
+  const closing = objectValue(value.closing, "about.closing", issues);
+  exactKeys(closing, ["title", "description"], "about.closing", issues);
   return {
     eyebrow: textValue(value.eyebrow, "about.eyebrow", 0, 100, issues),
     title: textValue(value.title, "about.title", 1, 240, issues),
@@ -406,6 +548,26 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
     facts: arrayValue(value.facts, "about.facts", 1, 6, issues).map((item, index) =>
       parseFact(item, `about.facts[${index}]`, issues),
     ),
+    capabilities: arrayValue(value.capabilities, "about.capabilities", 1, 8, issues).map(
+      (item, index) => parseService(item, `about.capabilities[${index}]`, issues),
+    ),
+    materials: stringArray(value.materials, "about.materials", 1, 12, 1, 100, issues),
+    process: arrayValue(value.process, "about.process", 1, 10, issues).map((item, index) =>
+      parseProcessStep(item, `about.process[${index}]`, issues),
+    ),
+    locations: arrayValue(value.locations, "about.locations", 1, 6, issues).map(
+      (item, index) => parseLocation(item, `about.locations[${index}]`, issues),
+    ),
+    closing: {
+      title: textValue(closing.title, "about.closing.title", 1, 240, issues),
+      description: textValue(
+        closing.description,
+        "about.closing.description",
+        1,
+        1_000,
+        issues,
+      ),
+    },
   };
 }
 
@@ -416,6 +578,17 @@ function parseFact(input: unknown, path: string, issues: string[]): FactItem {
     id: idValue(value.id, `${path}.id`, issues),
     value: textValue(value.value, `${path}.value`, 1, 24, issues),
     label: textValue(value.label, `${path}.label`, 1, 100, issues),
+  };
+}
+
+function parseLocation(input: unknown, path: string, issues: string[]): LocationItem {
+  const value = objectValue(input, path, issues);
+  exactKeys(value, ["id", "title", "location", "description"], path, issues);
+  return {
+    id: idValue(value.id, `${path}.id`, issues),
+    title: textValue(value.title, `${path}.title`, 1, 140, issues),
+    location: textValue(value.location, `${path}.location`, 1, 140, issues),
+    description: textValue(value.description, `${path}.description`, 1, 1_000, issues),
   };
 }
 

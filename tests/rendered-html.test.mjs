@@ -76,15 +76,42 @@ test("locks the complete published Avokodo presentation to repository assets", a
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.about.facts.map(({ value, label }) => [value, label]),
     [
-      ["100%", "Upwork Job Success"],
-      ["Top Rated", "Upwork status"],
-      ["28", "Total jobs"],
-      ["10+", "Years of experience"],
+      ["Xiamen + Shenzhen", "Design and engineering teams"],
+      ["Dongguan", "Manufacturing factory"],
+      ["OEM / ODM", "Flexible program models"],
+      ["Concept → Production", "Connected product delivery"],
     ],
   );
   assert.match(
     PUBLISHED_SITE_CONTENT.about.paragraphs.join(" "),
-    /5\.0 rating across 22 reviews/,
+    /plastic, silicone, metal hardware, and consumer electronics/,
+  );
+  assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.capabilities.map(({ title }) => title),
+    [
+      "Product Design",
+      "Engineering & Development",
+      "Tooling & Manufacturing",
+      "Supply-Chain Integration",
+    ],
+  );
+  assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.process.map(({ title }) => title),
+    [
+      "Concept & Brief",
+      "Industrial Design",
+      "Engineering",
+      "Prototype",
+      "Tooling",
+      "Mass Production",
+    ],
+  );
+  assert.deepEqual(
+    PUBLISHED_SITE_CONTENT.about.locations.map(({ title, location }) => [title, location]),
+    [
+      ["Xiamen Team", "Xiamen · Fujian · China"],
+      ["Shenzhen Team", "Shenzhen · Guangdong · China"],
+    ],
   );
   assert.deepEqual(
     PUBLISHED_SITE_CONTENT.work.items.map(({ title, image }) => [title, image?.url]),
@@ -213,6 +240,12 @@ test("keeps the homepage focused while section pages retain their content", asyn
   assert.match(workHtml, /Wearable product from design to manufacture/);
   assert.match(workHtml, /Phone case \+ leather/);
 
+  assert.match(aboutHtml, /Turning product ideas into production-ready solutions/);
+  assert.match(aboutHtml, /Product development and manufacturing, connected/);
+  assert.match(aboutHtml, /Materials &amp; program types/);
+  assert.match(aboutHtml, /Two teams, one connected operation/);
+  assert.match(aboutHtml, /Designed for better products and better production/);
+
   for (const image of contentImages(PUBLISHED_SITE_CONTENT)) {
     const pageHtml =
       image === PUBLISHED_SITE_CONTENT.hero.image
@@ -269,7 +302,7 @@ test("renders the ordered homepage slideshow with motion safeguards", async () =
 test("exports every primary navigation item as its own content page", async () => {
   const routes = {
     catalog: "Browse the material library by folder.",
-    about: "One connected path from design intent to manufactured detail.",
+    about: "Turning product ideas into production-ready solutions.",
     services: "From the first line on paper to production on the floor.",
     work: "Selected products, from concept to manufacture.",
     process: "A practical route from brief to production.",
@@ -430,7 +463,7 @@ test("exports the Avokodo browser tab icon", async () => {
     ]);
 
   const iconLink =
-    /<link rel="icon" href="\/icon\.svg(?:\?[^"]*)?" type="image\/svg\+xml" sizes="any"\/>/;
+    /<link (?=[^>]*rel="icon")(?=[^>]*href="\/icon\.svg(?:\?[^"]*)?")(?=[^>]*type="image\/svg\+xml")(?=[^>]*sizes="any")[^>]*\/>/;
 
   assert.match(homeHtml, iconLink);
   assert.match(adminHtml, iconLink);

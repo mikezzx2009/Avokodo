@@ -1123,8 +1123,8 @@
 
 .avk-about-paragraphs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
   margin-top: clamp(3rem, 7vw, 7rem);
   padding-top: 1rem;
   border-top: 1px solid var(--avk-line);
@@ -1178,12 +1178,252 @@
 
 .avk-facts dd {
   margin: 0;
-  max-width: 5.6ch;
-  font-size: clamp(2.6rem, 4.4vw, 5.4rem);
+  max-width: 11ch;
+  font-size: clamp(1.8rem, 2.8vw, 3.5rem);
   font-weight: 430;
-  letter-spacing: -0.075em;
-  line-height: 0.86;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
   text-wrap: balance;
+}
+
+.avk-about-subsection {
+  grid-column: 1 / -1;
+  margin-top: clamp(6rem, 10vw, 10rem);
+}
+
+.avk-about-subheading {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  align-items: start;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--avk-line);
+}
+
+.avk-about-subheading .avk-eyebrow {
+  grid-column: 1 / span 3;
+}
+
+.avk-about-subheading h3 {
+  grid-column: 4 / span 6;
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 4.6rem);
+  font-weight: 430;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.avk-about-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--avk-line);
+  border-bottom: 1px solid var(--avk-line);
+}
+
+.avk-about-capability {
+  display: flex;
+  min-height: 19rem;
+  flex-direction: column;
+  padding: 1.2rem 1.3rem 1.4rem;
+  border-right: 1px solid var(--avk-line);
+}
+
+.avk-about-capability:first-child {
+  padding-left: 0;
+}
+
+.avk-about-capability:last-child {
+  border-right: 0;
+}
+
+.avk-about-number {
+  margin: 0;
+  color: var(--avk-moss);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.avk-about-capability h4 {
+  margin: auto 0 1.4rem;
+  font-size: clamp(1.55rem, 2.4vw, 2.8rem);
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.avk-about-capability > p:last-child {
+  margin: 0;
+  color: rgba(23, 24, 20, 0.7);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.avk-about-materials {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.avk-about-materials > p {
+  grid-column: 1 / span 3;
+  margin: 0;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.avk-about-materials ul {
+  display: flex;
+  grid-column: 4 / -1;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avk-about-materials li {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--avk-line);
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+.avk-about-process {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--avk-line);
+  border-bottom: 1px solid var(--avk-line);
+  list-style: none;
+}
+
+.avk-about-process li {
+  display: flex;
+  min-height: 17rem;
+  flex-direction: column;
+  padding: 1.1rem;
+  border-right: 1px solid var(--avk-line);
+}
+
+.avk-about-process li:first-child {
+  padding-left: 0;
+}
+
+.avk-about-process li:last-child {
+  border-right: 0;
+}
+
+.avk-about-process span {
+  color: var(--avk-moss);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+
+.avk-about-process h4 {
+  margin: auto 0 1rem;
+  font-size: clamp(1.15rem, 1.7vw, 1.8rem);
+  font-weight: 460;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.avk-about-process p {
+  margin: 0;
+  color: rgba(23, 24, 20, 0.68);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.avk-about-location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--avk-line);
+  border-bottom: 1px solid var(--avk-line);
+}
+
+.avk-about-location {
+  min-height: 18rem;
+  padding: 1.3rem;
+  border-right: 1px solid var(--avk-line);
+}
+
+.avk-about-location:first-child {
+  padding-left: 0;
+}
+
+.avk-about-location:last-child {
+  border-right: 0;
+}
+
+.avk-about-location > p:first-child {
+  margin: 0;
+  color: var(--avk-moss);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.avk-about-location h4 {
+  margin: clamp(4rem, 8vw, 8rem) 0 1rem;
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 430;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.avk-about-location > p:last-child {
+  max-width: 34rem;
+  margin: 0;
+  color: rgba(23, 24, 20, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.avk-about-closing {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: clamp(6rem, 10vw, 10rem);
+  padding: clamp(2rem, 4vw, 4rem);
+  background: var(--avk-ink);
+  color: var(--avk-paper);
+}
+
+.avk-about-closing .avk-eyebrow {
+  grid-column: 1 / span 3;
+}
+
+.avk-about-closing h3 {
+  grid-column: 4 / span 6;
+  margin: 0;
+  font-size: clamp(2.6rem, 5vw, 5.8rem);
+  font-weight: 430;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.avk-about-closing > p:last-child {
+  grid-column: 4 / span 6;
+  margin: clamp(2rem, 4vw, 4rem) 0 0;
+  color: rgba(244, 241, 234, 0.76);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  text-align: center;
 }
 
 .avk-process {
@@ -1430,6 +1670,42 @@
     grid-column: 8 / -1;
   }
 
+  .avk-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .avk-facts > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .avk-facts > div:nth-child(n + 3) {
+    border-top: 1px solid var(--avk-line);
+  }
+
+  .avk-about-capability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .avk-about-capability:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .avk-about-capability:nth-child(n + 3) {
+    border-top: 1px solid var(--avk-line);
+  }
+
+  .avk-about-process {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .avk-about-process li:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .avk-about-process li:nth-child(n + 4) {
+    border-top: 1px solid var(--avk-line);
+  }
+
   .avk-process-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1621,8 +1897,85 @@
   }
 
   .avk-facts dd {
-    max-width: 8ch;
-    font-size: 3.7rem;
+    max-width: 12ch;
+    font-size: 2.5rem;
+  }
+
+  .avk-about-subsection {
+    margin-top: 5.5rem;
+  }
+
+  .avk-about-subheading {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+
+  .avk-about-subheading .avk-eyebrow {
+    margin-bottom: 2.5rem;
+  }
+
+  .avk-about-subheading h3 {
+    font-size: clamp(2.1rem, 10vw, 3.25rem);
+  }
+
+  .avk-about-capability-grid,
+  .avk-about-process,
+  .avk-about-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .avk-about-capability,
+  .avk-about-capability:first-child,
+  .avk-about-process li,
+  .avk-about-process li:first-child,
+  .avk-about-location,
+  .avk-about-location:first-child {
+    min-height: 14rem;
+    padding: 1rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--avk-line);
+  }
+
+  .avk-about-capability:nth-child(n + 3),
+  .avk-about-process li:nth-child(n + 4) {
+    border-top: 0;
+  }
+
+  .avk-about-capability:last-child,
+  .avk-about-process li:last-child,
+  .avk-about-location:last-child {
+    border-bottom: 0;
+  }
+
+  .avk-about-materials {
+    display: block;
+    margin-top: 2rem;
+  }
+
+  .avk-about-materials ul {
+    margin-top: 1rem;
+  }
+
+  .avk-about-location h4 {
+    margin-top: 4rem;
+  }
+
+  .avk-about-closing {
+    display: block;
+    margin-top: 5.5rem;
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .avk-about-closing .avk-eyebrow {
+    margin-bottom: 3.5rem;
+  }
+
+  .avk-about-closing h3 {
+    font-size: clamp(2.4rem, 12vw, 3.8rem);
+  }
+
+  .avk-about-closing > p:last-child {
+    margin-top: 2rem;
   }
 
   .avk-process-list {
