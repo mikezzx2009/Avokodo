@@ -389,6 +389,70 @@ export default function SitePage({
               ))}
             </dl>
           ) : null}
+
+          <div className="avk-about-subsection" aria-labelledby="about-capabilities-title">
+            <div className="avk-about-subheading">
+              <p className="avk-eyebrow">Integrated capabilities</p>
+              <h3 id="about-capabilities-title">
+                Product development and manufacturing, connected.
+              </h3>
+            </div>
+            <div className="avk-about-capability-grid">
+              {about.capabilities.map((capability) => (
+                <article className="avk-about-capability" key={capability.id}>
+                  <p className="avk-about-number">{capability.number}</p>
+                  <h4>{capability.title}</h4>
+                  <p>{capability.description}</p>
+                </article>
+              ))}
+            </div>
+            <div className="avk-about-materials">
+              <p>Materials &amp; program types</p>
+              <ul aria-label="Materials and program types">
+                {about.materials.map((material) => (
+                  <li key={material}>{material}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="avk-about-subsection" aria-labelledby="about-process-title">
+            <div className="avk-about-subheading">
+              <p className="avk-eyebrow">From brief to production</p>
+              <h3 id="about-process-title">One integrated path.</h3>
+            </div>
+            <ol className="avk-about-process">
+              {about.process.map((step) => (
+                <li key={step.id}>
+                  <span>{step.number}</span>
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="avk-about-subsection" aria-labelledby="about-locations-title">
+            <div className="avk-about-subheading">
+              <p className="avk-eyebrow">Our locations</p>
+              <h3 id="about-locations-title">Two teams, one connected operation.</h3>
+            </div>
+            <div className="avk-about-location-grid">
+              {about.locations.map((location) => (
+                <article className="avk-about-location" key={location.id}>
+                  <p>{location.location}</p>
+                  <h4>{location.title}</h4>
+                  <p>{location.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <aside className="avk-about-closing">
+            <p className="avk-eyebrow">Why Avokodo</p>
+            <h3>{about.closing.title}</h3>
+            <p>{about.closing.description}</p>
+          </aside>
         </section>
         ) : null}
 
