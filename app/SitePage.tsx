@@ -369,6 +369,7 @@ export default function SitePage({
 
           <div className="avk-about-copy">
             <div className="avk-about-paragraphs">
+              <h3>{about.introTitle}</h3>
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -377,6 +378,19 @@ export default function SitePage({
 
           <div className="avk-about-visual">
             <ImageOrArtwork image={about.image} variant={5} />
+          </div>
+
+          <div className="avk-about-story" aria-label="About Avokodo in detail">
+            {about.storySections.map((story) => (
+              <section className="avk-about-story-section" key={story.id}>
+                <h3>{story.title}</h3>
+                <div>
+                  {story.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
 
           {about.facts.length ? (

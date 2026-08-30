@@ -54,6 +54,12 @@ export type GalleryItem = {
   caption: string;
 };
 
+export type StorySection = {
+  id: string;
+  title: string;
+  paragraphs: string[];
+};
+
 export type SiteContent = {
   site: {
     name: string;
@@ -72,7 +78,9 @@ export type SiteContent = {
   about: {
     eyebrow: string;
     title: string;
+    introTitle: string;
     paragraphs: string[];
+    storySections: StorySection[];
     image: ImageRef | null;
     gallery: GalleryItem[];
     facts: FactItem[];
@@ -156,10 +164,89 @@ export const PUBLISHED_SITE_CONTENT: SiteContent = {
   about: {
     eyebrow: "About Avokodo",
     title: "AVOKODO&SMLP",
+    introTitle: "From Concept to Production",
     paragraphs: [
-      "Avokodo is an integrated product design, development, and manufacturing company. Our in-house design and engineering teams operate in Xiamen and Shenzhen, supported by our own manufacturing factory in Dongguan.",
-      "We connect concept development, industrial design, engineering, prototyping, material selection, tooling, manufacturing, assembly, and production coordination in one practical workflow.",
-      "Our teams support OEM, ODM, and custom programs across plastic, silicone, metal hardware, and consumer electronics, with manufacturability, quality, target cost, and scalable production considered from the start.",
+      "Avokodo is an integrated product design, development, and manufacturing company dedicated to turning ideas into practical, manufacturable, and market-ready products. With our design and engineering teams operating in Xiamen and Shenzhen, supported by our own manufacturing factory in Dongguan, we provide customers with a streamlined development process that connects creative design, technical engineering, prototyping, tooling, manufacturing, assembly, and production coordination.",
+      "Our goal is simple: to make product development more efficient, more reliable, and easier to manage.",
+      "Instead of separating design, engineering, and manufacturing into disconnected stages, Avokodo brings these capabilities together within one coordinated workflow. This allows our teams to consider not only how a product should look and function, but also how it will be manufactured, assembled, tested, packaged, and produced at scale.",
+    ],
+    storySections: [
+      {
+        id: "integrated-product-design-development",
+        title: "Integrated Product Design & Development",
+        paragraphs: [
+          "Every successful product starts with a clear understanding of its purpose, user experience, technical requirements, target market, and manufacturing objectives.",
+          "Our product development process can begin from an initial idea, sketch, reference image, existing sample, CAD model, or detailed product specification. From there, our design and engineering teams work with customers to develop the concept into a production-ready solution.",
+          "Our capabilities cover multiple stages of product development, including concept development, industrial design, 3D modeling, mechanical and structural engineering, material selection, prototyping, design validation, design for manufacturing (DFM), tooling development, production engineering, assembly, and mass production.",
+          "By involving engineering and manufacturing considerations early in the design process, we aim to identify potential production challenges before tooling and mass production begin. This helps reduce unnecessary design revisions, shorten development cycles, control costs, and improve overall product quality.",
+        ],
+      },
+      {
+        id: "materials-manufacturing-capabilities",
+        title: "Materials & Manufacturing Capabilities",
+        paragraphs: [
+          "Avokodo supports the development and manufacturing of products involving a wide range of materials and production processes, with particular experience in plastic, silicone, metal hardware, and consumer electronics.",
+          "For plastic products and components, we support product engineering, injection-molded part development, tooling coordination, material selection, surface finishing, assembly, and production.",
+          "For silicone products, we work with customers to develop components and finished products that require flexibility, durability, specific tactile properties, or specialized functional characteristics.",
+          "Our metal hardware capabilities support products requiring structural components, mechanical parts, brackets, housings, fasteners, inserts, and other precision or functional metal elements.",
+          "For consumer electronics, our development process can integrate industrial design, mechanical engineering, electronic components, enclosures, internal structures, assembly requirements, and manufacturing considerations into a coordinated product solution.",
+          "Many modern products combine several different materials and processes. A single product may require injection-molded plastic parts, silicone components, metal hardware, electronic assemblies, surface treatments, printing, packaging, and final assembly. Our integrated approach helps coordinate these different processes and suppliers within a unified development and production plan.",
+        ],
+      },
+      {
+        id: "oem-odm-custom-programs",
+        title: "OEM, ODM & Custom Product Programs",
+        paragraphs: [
+          "We support OEM, ODM, and fully customized product development programs for customers with different requirements and stages of product maturity.",
+          "For OEM projects, we can help optimize existing product designs for manufacturing, tooling, assembly, cost, and production efficiency.",
+          "For ODM and custom development projects, our teams can participate from the early concept stage, helping transform ideas into detailed designs, engineered components, prototypes, tooling, and finished products.",
+          "We understand that every project has different priorities. Some customers focus on achieving a particular appearance or user experience, while others prioritize cost, durability, manufacturing efficiency, materials, production volume, or time to market.",
+          "Our role is to balance these requirements and develop solutions that make sense from both a design perspective and a manufacturing perspective.",
+        ],
+      },
+      {
+        id: "design-for-manufacturing",
+        title: "Design for Manufacturing",
+        paragraphs: [
+          "At Avokodo, manufacturability is considered from the beginning rather than after the design is complete.",
+          "Our designers and engineers work closely with manufacturing teams to evaluate part geometry, wall thickness, draft angles, tolerances, assembly methods, material behavior, tooling requirements, surface finishes, production processes, and potential quality risks.",
+          "This design-for-manufacturing approach helps bridge the gap between a visually attractive concept and a product that can actually be produced consistently and efficiently.",
+          "Before moving toward mass production, prototypes and engineering samples can be used to evaluate dimensions, appearance, fit, function, assembly, materials, and overall product performance. Feedback from these stages can then be incorporated into the design before tooling or production is finalized.",
+        ],
+      },
+      {
+        id: "prototype-to-mass-production",
+        title: "From Prototype to Mass Production",
+        paragraphs: [
+          "Moving from a prototype to mass production requires more than simply creating a mold or placing an order with a factory.",
+          "It requires coordination between design, engineering, tooling, materials, suppliers, manufacturing processes, quality requirements, assembly procedures, and production schedules.",
+          "Our team supports this transition by maintaining communication between the different stages of development. Once a product design has been validated, we can move into tooling development, engineering samples, trial production, design adjustments, production preparation, and scalable manufacturing.",
+          "Because our manufacturing capability is supported by our own factory in Dongguan, we are able to maintain closer communication between product development and production teams. This connection allows manufacturing feedback to reach designers and engineers more efficiently and helps us respond to production challenges during development.",
+        ],
+      },
+      {
+        id: "xiamen-shenzhen-dongguan",
+        title: "Xiamen · Shenzhen · Dongguan",
+        paragraphs: [
+          "Our operations are strategically located across three important manufacturing and product-development centers in China.",
+          "Our Xiamen team supports product design, development, engineering, project coordination, and related technical activities.",
+          "Our Shenzhen team benefits from access to one of the world's most established ecosystems for consumer electronics, product development, engineering resources, components, and supply-chain integration.",
+          "Our Dongguan manufacturing factory provides the production foundation required to turn developed products into physical goods, supporting manufacturing, assembly, production coordination, and scalable delivery.",
+          "Together, these locations create an integrated network connecting design, engineering, supply chain, and manufacturing.",
+        ],
+      },
+      {
+        id: "building-products-that-can-be-made",
+        title: "Building Products That Can Be Made",
+        paragraphs: [
+          "At Avokodo, we believe good product development is not only about creating something that looks good on a screen or works as a prototype. A successful product must also be practical to manufacture, consistent in quality, appropriate for its target cost, and capable of being produced at the required scale.",
+          "That is why we approach every project with the complete product lifecycle in mind.",
+          "From the first concept to engineering development, from prototype to tooling, and from pilot production to mass manufacturing, our teams work to keep design intent and production reality connected.",
+          "Whether you already have a finished design that needs manufacturing support, an existing product that requires improvement, or simply an idea that needs to be developed from the ground up, Avokodo provides an integrated path from concept to production.",
+          "Design. Engineer. Develop. Manufacture. Deliver.",
+          "Avokodo — turning ideas into products built for real-world production.",
+        ],
+      },
     ],
     image: {
       id: "about-studio-entrance",
@@ -648,7 +735,9 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
     [
       "eyebrow",
       "title",
+      "introTitle",
       "paragraphs",
+      "storySections",
       "image",
       "gallery",
       "facts",
@@ -666,7 +755,11 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
   return {
     eyebrow: textValue(value.eyebrow, "about.eyebrow", 0, 100, issues),
     title: textValue(value.title, "about.title", 1, 240, issues),
+    introTitle: textValue(value.introTitle, "about.introTitle", 1, 180, issues),
     paragraphs: stringArray(value.paragraphs, "about.paragraphs", 1, 8, 1, 1_500, issues),
+    storySections: arrayValue(value.storySections, "about.storySections", 1, 12, issues).map(
+      (item, index) => parseStorySection(item, `about.storySections[${index}]`, issues),
+    ),
     image: parseNullableImage(value.image, "about.image", issues),
     gallery: arrayValue(value.gallery, "about.gallery", 1, 12, issues).map((item, index) =>
       parseGalleryItem(item, `about.gallery[${index}]`, issues),
@@ -694,6 +787,16 @@ function parseAbout(input: unknown, issues: string[]): SiteContent["about"] {
         issues,
       ),
     },
+  };
+}
+
+function parseStorySection(input: unknown, path: string, issues: string[]): StorySection {
+  const value = objectValue(input, path, issues);
+  exactKeys(value, ["id", "title", "paragraphs"], path, issues);
+  return {
+    id: idValue(value.id, `${path}.id`, issues),
+    title: textValue(value.title, `${path}.title`, 1, 180, issues),
+    paragraphs: stringArray(value.paragraphs, `${path}.paragraphs`, 1, 10, 1, 1_500, issues),
   };
 }
 
