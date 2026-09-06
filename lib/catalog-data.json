@@ -830,6 +830,155 @@
       ]
     },
     {
+      "slug": "plush-toys",
+      "title": "Plush Toys",
+      "imageCount": 30,
+      "videoCount": 1,
+      "cover": "/factory-material/plush-toys/product/001.jpg",
+      "groups": [
+        {
+          "slug": "factory",
+          "title": "Factory",
+          "imageCount": 12,
+          "videoCount": 1,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/002.jpg"
+            },
+            {
+              "kind": "video",
+              "src": "/factory-material/plush-toys/factory/003.mp4"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/factory/013.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "product",
+          "title": "Product",
+          "imageCount": 18,
+          "videoCount": 0,
+          "media": [
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/001.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/002.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/003.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/004.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/005.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/006.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/007.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/008.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/009.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/010.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/011.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/012.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/013.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/014.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/015.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/016.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/017.jpg"
+            },
+            {
+              "kind": "image",
+              "src": "/factory-material/plush-toys/product/018.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "puzzle",
       "title": "Puzzle",
       "imageCount": 67,
