@@ -461,15 +461,16 @@ test("exports every factory-material folder as a complete catalog page", async (
   const { categories } = await catalogManifest();
   const catalogHtml = await source("out/catalog/index.html");
   const printCategory = categories.find((category) => category.slug === "3d-print");
+  const plushCategory = categories.find((category) => category.slug === "plush-toys");
 
-  assert.equal(categories.length, 11);
+  assert.equal(categories.length, 12);
   assert.equal(
     categories.reduce((total, category) => total + category.imageCount, 0),
-    238,
+    268,
   );
   assert.equal(
     categories.reduce((total, category) => total + category.videoCount, 0),
-    11,
+    12,
   );
   assert.equal(
     printCategory.groups.find((group) => group.slug === "product").imageCount,
@@ -478,6 +479,16 @@ test("exports every factory-material folder as a complete catalog page", async (
   assert.equal(
     printCategory.groups.find((group) => group.slug === "factory").imageCount,
     5,
+  );
+  assert.equal(plushCategory.imageCount, 30);
+  assert.equal(plushCategory.videoCount, 1);
+  assert.equal(
+    plushCategory.groups.find((group) => group.slug === "product").imageCount,
+    18,
+  );
+  assert.equal(
+    plushCategory.groups.find((group) => group.slug === "factory").imageCount,
+    12,
   );
 
   for (const category of categories) {
