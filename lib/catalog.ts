@@ -99,8 +99,8 @@ export const PU_FOAM_RUGBY_BALL: CatalogProduct = {
 };
 
 export const CATALOG_CATEGORIES = [
-  ...(catalogData.categories as CatalogCategory[]),
   PU_FOAM_TOYS_CATEGORY,
+  ...(catalogData.categories as CatalogCategory[]),
 ];
 
 export function getCatalogCategory(slug: string) {
