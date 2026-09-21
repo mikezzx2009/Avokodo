@@ -1,8 +1,7 @@
 import Link from "next/link";
 import type { ImageRef, LinkItem, ProjectItem, SiteContent } from "@/lib/content";
-import type { CatalogCategory } from "@/lib/catalog";
-import { CatalogCategoryView, CatalogIndex } from "./CatalogLibrary";
-import HeroSlideshow from "./HeroSlideshow";
+import type { CatalogCategory, CatalogProduct } from "@/lib/catalog";
+import { CatalogCategoryView, CatalogIndex, CatalogProductView } from "./CatalogLibrary";
 
 type SmartLinkProps = LinkItem & {
   className?: string;
@@ -189,10 +188,12 @@ export default function SitePage({
   content,
   section,
   catalogCategory,
+  catalogProduct,
 }: {
   content: SiteContent;
   section?: SectionSlug;
   catalogCategory?: CatalogCategory;
+  catalogProduct?: CatalogProduct;
 }) {
   const { site, navigation, hero, about, services, work, process, contact, footer } =
     content;
@@ -242,15 +243,21 @@ export default function SitePage({
           </div>
 
           <h1
-            className="avk-page-title avk-page-title--uppercase"
             id="hero-title"
+            style={{
+              fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
+              maxWidth: "none",
+              textAlign: "center",
+              textTransform: "uppercase",
+              whiteSpace: "nowrap",
+            }}
           >
             {hero.title}
           </h1>
 
           <div className="avk-hero-bottom">
             <div className="avk-hero-visual">
-              <HeroSlideshow image={hero.image} />
+              <ImageOrArtwork image={hero.image} variant={0} eager />
             </div>
 
             <div className="avk-hero-copy">
@@ -272,16 +279,18 @@ export default function SitePage({
         ) : null}
 
         {shows("work") ? (
-        <section
-          className="avk-work avk-section avk-page-section--flush"
-          id="work"
-          aria-labelledby="work-title"
-        >
-          <div className="avk-section-heading avk-page-heading">
+        <section className="avk-work avk-section" id="work" aria-labelledby="work-title">
+          <div className="avk-section-heading">
             <p className="avk-eyebrow">{work.eyebrow}</p>
             <h2
-              className="avk-page-title avk-page-title--uppercase"
               id="work-title"
+              style={{
+                fontSize: "clamp(0.8rem, 3vw, 2.5rem)",
+                maxWidth: "none",
+                textAlign: "center",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
             >
               {work.title}
             </h2>
@@ -305,15 +314,13 @@ export default function SitePage({
 
         {shows("catalog") ? (
         <section
-          className={
-            catalogCategory
-              ? "avk-work avk-section avk-page-section--compact"
-              : "avk-work avk-section avk-catalog-index-section avk-page-section--flush"
-          }
+          className="avk-work avk-section"
           id="catalog"
           aria-labelledby="catalog-title"
         >
-          {catalogCategory ? (
+          {catalogProduct ? (
+            <CatalogProductView product={catalogProduct} />
+          ) : catalogCategory ? (
             <CatalogCategoryView category={catalogCategory} />
           ) : (
             <CatalogIndex />
@@ -323,15 +330,13 @@ export default function SitePage({
 
         {shows("services") ? (
         <section
-          className="avk-services avk-section avk-section--ink avk-page-section--flush"
+          className="avk-services avk-section avk-section--ink"
           id="services"
           aria-labelledby="services-title"
         >
-          <div className="avk-section-heading avk-page-heading avk-section-heading--split">
+          <div className="avk-section-heading avk-section-heading--split">
             <p className="avk-eyebrow">{services.eyebrow}</p>
-            <h2 className="avk-page-title" id="services-title">
-              {services.title}
-            </h2>
+            <h2 id="services-title">{services.title}</h2>
             <p className="avk-section-intro">{services.intro}</p>
           </div>
 
@@ -355,21 +360,11 @@ export default function SitePage({
         ) : null}
 
         {shows("about") ? (
-        <section
-          className="avk-about avk-section avk-page-section--compact"
-          id="about"
-          aria-labelledby="about-title"
-        >
-          <div className="avk-section-heading avk-page-heading avk-page-heading--plain avk-about-heading">
-            <p className="avk-eyebrow">{about.eyebrow}</p>
-            <h2 className="avk-page-title avk-about-title--single-line" id="about-title">
-              {about.title}
-            </h2>
-          </div>
-
+        <section className="avk-about avk-section" id="about" aria-labelledby="about-title">
           <div className="avk-about-copy">
+            <p className="avk-eyebrow">{about.eyebrow}</p>
+            <h2 id="about-title">{about.title}</h2>
             <div className="avk-about-paragraphs">
-              <h3>{about.introTitle}</h3>
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -378,19 +373,6 @@ export default function SitePage({
 
           <div className="avk-about-visual">
             <ImageOrArtwork image={about.image} variant={5} />
-          </div>
-
-          <div className="avk-about-story" aria-label="About Avokodo in detail">
-            {about.storySections.map((story) => (
-              <section className="avk-about-story-section" key={story.id}>
-                <h3>{story.title}</h3>
-                <div>
-                  {story.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </section>
-            ))}
           </div>
 
           {about.facts.length ? (
@@ -403,114 +385,14 @@ export default function SitePage({
               ))}
             </dl>
           ) : null}
-
-          <div className="avk-about-subsection" aria-labelledby="about-gallery-title">
-            <div className="avk-about-subheading avk-about-subheading--single-line">
-              <p className="avk-eyebrow">Inside Avokodo</p>
-              <h3 id="about-gallery-title">PROTOTYPE&amp;MASS PRODUCTION</h3>
-            </div>
-            <div className="avk-about-gallery">
-              {about.gallery.map((item) => (
-                <figure className="avk-about-gallery-item" key={item.id}>
-                  <div className="avk-about-gallery-media">
-                    <ImageOrArtwork image={item.image} variant={5} />
-                  </div>
-                  <figcaption>{item.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-
-          <div className="avk-about-subsection" aria-labelledby="about-capabilities-title">
-            <div className="avk-about-subheading avk-about-subheading--single-line">
-              <p className="avk-eyebrow">Integrated capabilities</p>
-              <h3 id="about-capabilities-title">
-                DEVELOPMENT FOR MANUFACTURING
-              </h3>
-            </div>
-            <div className="avk-about-capability-grid">
-              {about.capabilities.map((capability) => (
-                <article className="avk-about-capability" key={capability.id}>
-                  <p className="avk-about-number">{capability.number}</p>
-                  <h4>{capability.title}</h4>
-                  <p>{capability.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="avk-about-materials">
-              <p>Materials &amp; program types</p>
-              <ul aria-label="Materials and program types">
-                {about.materials.map((material) => (
-                  <li key={material}>{material}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="avk-about-subsection" aria-labelledby="about-process-title">
-            <div className="avk-about-subheading avk-about-subheading--single-line">
-              <p className="avk-eyebrow">From brief to production</p>
-              <h3 id="about-process-title">ONE STOP SERIVCE</h3>
-            </div>
-            <ol className="avk-about-process">
-              {about.process.map((step) => (
-                <li key={step.id}>
-                  <span>{step.number}</span>
-                  <h4>{step.title}</h4>
-                  <p>{step.description}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="avk-about-subsection" aria-labelledby="about-locations-title">
-            <div className="avk-about-subheading avk-about-subheading--single-line">
-              <p className="avk-eyebrow">Our locations</p>
-              <h3 id="about-locations-title">TWO TEAMS &amp; ONE CONNECTED OPERATION</h3>
-            </div>
-            <div className="avk-about-location-grid">
-              {about.locations.map((location) => (
-                <article className="avk-about-location" key={location.id}>
-                  <p>{location.location}</p>
-                  <h4>{location.title}</h4>
-                  <p>{location.description}</p>
-                  <div className="avk-about-location-map">
-                    <ImageOrArtwork image={location.mapImage} variant={5} />
-                  </div>
-                  <a
-                    className="avk-about-map-link"
-                    href={location.mapHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open ${location.title} location in Google Maps`}
-                  >
-                    <span>Open in Google Maps</span>
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <aside className="avk-about-closing">
-            <p className="avk-eyebrow">Why Avokodo</p>
-            <h3>{about.closing.title}</h3>
-            <p>{about.closing.description}</p>
-          </aside>
         </section>
         ) : null}
 
         {shows("process") ? (
-        <section
-          className="avk-process avk-section avk-page-section--flush"
-          id="process"
-          aria-labelledby="process-title"
-        >
-          <div className="avk-section-heading avk-page-heading avk-section-heading--split">
+        <section className="avk-process avk-section" id="process" aria-labelledby="process-title">
+          <div className="avk-section-heading avk-section-heading--split">
             <p className="avk-eyebrow">{process.eyebrow}</p>
-            <h2 className="avk-page-title" id="process-title">
-              {process.title}
-            </h2>
+            <h2 id="process-title">{process.title}</h2>
             <p className="avk-section-intro">{process.intro}</p>
           </div>
 
@@ -527,17 +409,9 @@ export default function SitePage({
         ) : null}
 
         {shows("contact") ? (
-        <section
-          className="avk-contact avk-page-section--compact"
-          id="contact"
-          aria-labelledby="contact-title"
-        >
-          <div className="avk-section-heading avk-page-heading avk-page-heading--plain">
-            <p className="avk-eyebrow">{contact.eyebrow}</p>
-            <h2 className="avk-page-title" id="contact-title">
-              {contact.title}
-            </h2>
-          </div>
+        <section className="avk-contact" id="contact" aria-labelledby="contact-title">
+          <p className="avk-eyebrow">{contact.eyebrow}</p>
+          <h2 id="contact-title">{contact.title}</h2>
           <div className="avk-contact-bottom">
             <p>{contact.description}</p>
             <div className="avk-contact-actions">

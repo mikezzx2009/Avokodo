@@ -4,6 +4,7 @@ import {
   mediaCountLabel,
   type CatalogCategory,
   type CatalogMedia,
+  type CatalogProduct,
 } from "@/lib/catalog";
 
 function CatalogImage({
@@ -71,11 +72,9 @@ function CatalogMediaItem({
 export function CatalogIndex() {
   return (
     <>
-      <div className="avk-section-heading avk-page-heading">
+      <div className="avk-section-heading">
         <p className="avk-eyebrow">Catalog</p>
-        <h2 className="avk-page-title" id="catalog-title">
-          Product &amp; Factory Library
-        </h2>
+        <h2 id="catalog-title">Product &amp; Factory Library</h2>
         <p className="avk-section-intro">
           Browse the material library by folder. Each category opens into its full
           collection of product, factory, and supporting media.
@@ -122,11 +121,9 @@ export function CatalogCategoryView({ category }: { category: CatalogCategory })
         All catalog categories
       </Link>
 
-      <div className="avk-section-heading avk-page-heading avk-catalog-detail-heading">
+      <div className="avk-section-heading avk-catalog-detail-heading">
         <p className="avk-eyebrow">Catalog / {category.title}</p>
-        <h2 className="avk-page-title" id="catalog-title">
-          {category.title}
-        </h2>
+        <h2 id="catalog-title">{category.title}</h2>
         <p className="avk-section-intro">
           {mediaCountLabel(category.imageCount, category.videoCount)} organized in the
           same folder structure as the source material.
@@ -151,20 +148,100 @@ export function CatalogCategoryView({ category }: { category: CatalogCategory })
                 <p>{mediaCountLabel(group.imageCount, group.videoCount)}</p>
               </header>
 
-              <div className="avk-catalog-gallery">
-                {group.media.map((media, index) => (
-                  <CatalogMediaItem
-                    category={category}
-                    groupTitle={group.title}
-                    media={media}
-                    index={index}
-                    key={media.src}
-                  />
-                ))}
-              </div>
+              {group.productHref && group.productTitle && group.productCover ? (
+                <Link className="avk-catalog-product-link" href={group.productHref}>
+                  <div className="avk-catalog-product-link-media">
+                    <CatalogImage src={group.productCover} alt={group.productTitle} />
+                  </div>
+                  <div>
+                    <p>Product</p>
+                    <h4>{group.productTitle}</h4>
+                    <span>View product details ↗</span>
+                  </div>
+                </Link>
+              ) : group.media.length ? (
+                <div className="avk-catalog-gallery">
+                  {group.media.map((media, index) => (
+                    <CatalogMediaItem
+                      category={category}
+                      groupTitle={group.title}
+                      media={media}
+                      index={index}
+                      key={media.src}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p className="avk-catalog-empty">Factory material will be added here.</p>
+              )}
             </section>
           );
         })}
+      </div>
+    </>
+  );
+}
+
+function ProductMediaGrid({
+  product,
+  title,
+  media,
+}: {
+  product: CatalogProduct;
+  title: string;
+  media: CatalogMedia[];
+}) {
+  return (
+    <section className="avk-catalog-group" aria-labelledby={`product-${title}`}>
+      <header className="avk-catalog-group-heading">
+        <div>
+          <p>Product material</p>
+          <h3 id={`product-${title}`}>{title}</h3>
+        </div>
+        <p>{mediaCountLabel(media.length, 0)}</p>
+      </header>
+      <div className="avk-catalog-gallery">
+        {media.map((item, index) => (
+          <CatalogMediaItem
+            category={{ title: product.title } as CatalogCategory}
+            groupTitle={title}
+            media={item}
+            index={index}
+            key={item.src}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function CatalogProductView({ product }: { product: CatalogProduct }) {
+  return (
+    <>
+      <Link className="avk-catalog-back" href={`/catalog/${product.categorySlug}/`}>
+        <span aria-hidden="true">←</span>
+        PU Foam Toys
+      </Link>
+      <div className="avk-section-heading avk-catalog-detail-heading">
+        <p className="avk-eyebrow">Catalog / PU Foam Toys / Product</p>
+        <h2 id="catalog-title">{product.title}</h2>
+        <p className="avk-section-intro">Custom PU foam promotional toy.</p>
+      </div>
+      <section className="avk-catalog-product-description" aria-labelledby="product-description">
+        <p>Product description</p>
+        <h3 id="product-description">Designed to bounce back fast and stand out.</h3>
+        <p>{product.description}</p>
+        <ul>
+          {product.features.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+        <p className="avk-catalog-product-size"><strong>Size</strong>{product.size}</p>
+      </section>
+      <div className="avk-catalog-groups">
+        <ProductMediaGrid product={product} title="Sketch" media={product.sketch} />
+        <ProductMediaGrid product={product} title="Render" media={product.renders} />
+        <ProductMediaGrid product={product} title="Picture" media={product.pictures} />
       </div>
     </>
   );
