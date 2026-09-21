@@ -32,6 +32,7 @@ export type CatalogProduct = {
   description: string;
   features: string[];
   size: string;
+  customisation: string;
   sketch: CatalogMedia[];
   renders: CatalogMedia[];
   pictures: CatalogMedia[];
@@ -42,7 +43,7 @@ const PU_FOAM_TOYS_CATEGORY: CatalogCategory = {
   title: "PU Foam Toys",
   imageCount: 7,
   videoCount: 0,
-  cover: "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/01.png",
+  cover: "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/01.webp",
   groups: [
     {
       slug: "factory",
@@ -60,7 +61,7 @@ const PU_FOAM_TOYS_CATEGORY: CatalogCategory = {
       productHref: "/catalog/pu-foam-toys/pu-foam-rugby-ball-stress-toy/",
       productTitle: "PU Foam Rugby Ball Stress Toy",
       productCover:
-        "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/01.png",
+        "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/01.webp",
     },
   ],
 };
@@ -80,19 +81,20 @@ export const PU_FOAM_RUGBY_BALL: CatalogProduct = {
     "Custom hardness, packaging, and branding options available.",
   ],
   size: "Approx. 15 × 9 × 9 cm (Length × Width × Height)",
+  customisation: "Custom colours, logo placement, printed artwork, packaging, and size options are available for project-based development.",
   sketch: [
     {
       kind: "image",
-      src: "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/sketch.png",
+      src: "/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/sketch.webp",
     },
   ],
   renders: ["01", "02", "03"].map((number) => ({
     kind: "image" as const,
-    src: `/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/${number}.png`,
+    src: `/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/render/${number}.webp`,
   })),
   pictures: ["01", "02", "03"].map((number) => ({
     kind: "image" as const,
-    src: `/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/picture/${number}.png`,
+    src: `/factory-material/pu-foam-toys/product/pu-foam-rugby-ball-stress-toy/picture/${number}.webp`,
   })),
 };
 

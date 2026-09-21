@@ -201,7 +201,7 @@ export default function SitePage({
   const shows = (target: SectionSlug) => section === target;
 
   return (
-    <div className="avk-site" id="top">
+    <div className={section === "catalog" ? "avk-site avk-site--catalog" : "avk-site"} id="top">
       <a className="avk-skip-link" href="#main-content">
         Skip to content
       </a>
@@ -314,7 +314,7 @@ export default function SitePage({
 
         {shows("catalog") ? (
         <section
-          className="avk-work avk-section"
+          className="avk-work avk-section avk-catalog-shell"
           id="catalog"
           aria-labelledby="catalog-title"
         >
