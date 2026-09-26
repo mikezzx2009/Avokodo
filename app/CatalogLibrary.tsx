@@ -63,7 +63,7 @@ export function CatalogIndex() {
       <Breadcrumb items={[{ title: "Catalog" }]} />
       <header className="catalog-shop-heading">
         <p className="catalog-kicker">The Avokodo collection</p>
-        <h1 id="catalog-title">Product catalog.</h1>
+        <h1 id="catalog-title">PRODUCT CATALOG</h1>
         <p>Explore our products, materials and manufacturing capabilities.</p>
       </header>
       <div className="catalog-shop-toolbar">
